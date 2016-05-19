@@ -1,0 +1,5 @@
+PHP modules
+    - for resample images
+    sudo apt-get install php5-gd
+    - for searching
+    sudo apt-get install php7.0-mbstring
