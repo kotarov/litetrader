@@ -23,7 +23,8 @@ $ret['current'] = $dbh->query("SELECT id, name FROM categories WHERE id = ".(int
 $ret['data'] = $dbh->query("
 SELECT 
     i.id id_image, 
-    p.id, p.name, 
+    p.id, 
+    p.name, 
     p.reference, 
     p.description, 
     p.tags, 
@@ -32,7 +33,8 @@ SELECT
     c.url_rewrite url_rewrite, 
     c.name category, 
     c.parents,
-    p.details
+    p.details,
+    p.is_avaible
 FROM products p 
 LEFT JOIN images i ON (i.id_product = p.id AND i.is_cover =1 )
 LEFT JOIN categories c ON (c.id = p.id_category) 

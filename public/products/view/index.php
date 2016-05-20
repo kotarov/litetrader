@@ -26,12 +26,12 @@
         <link  href="<?=$_ASSETS['dataTables.uikit.css']?>" rel="stylesheet">
         <script src="<?=$_ASSETS['dataTables.js']?>"></script>
         <script src="<?=$_ASSETS['dataTables.uikit.js']?>"></script>
-
         
         <script src="<?=$_ASSETS['elevatezoom.js']?>"></script>
         
         <style>
-            .zoomGalleryActive { border: 1px solid red;}    
+            .zoomGalleryActive { border: 1px solid red;}
+            .buy-product {display:none}
         </style>
     </head>
     <body id="page-product"> 
@@ -111,6 +111,8 @@
                     $("#product-images").append('<a href="#" data-image="'+url+'" data-uk-lightbox="{group:\'main-image\'}" class="uk-width-1-5"><img src="'+url+'"> </a>');
                 });
                 
+                if(ret.data.is_avaible == 1) $(".buy-product").show();
+                else $(".buy-product").hide();
                 
                 $("#main-image").elevateZoom({
                     tint:true, tintColour:'black', tintOpacity:0.5,

@@ -2,7 +2,7 @@
 
 $NO_ENCODE = true;
 $menu = include __DIR__.'/../../ajax/getMenu.php';
-//print_r($menu);exit;
+
 ?>
 
         <div class="uk-container uk-container-center uk-margin-large-bottom">

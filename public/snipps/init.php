@@ -22,7 +22,7 @@ if (!function_exists('base_url')) { function base_url(){
     $_COMPANY = parse_ini_file(__DIR__.'/../../company.ini');
     
     define('URL_BASE', base_url());
-    define( 'DB_DIR', realpath('../../sqlite/').'/' );
-    define('LIB_DIR', realpath('../../lib/'   ).'/' );
-    define('INI_DIR', realpath('../../'   ).'/' );
+    define( 'DB_DIR', realpath(__DIR__.'/../../sqlite/').'/' );
+    define('LIB_DIR', realpath(__DIR__.'/../../lib/'   ).'/' );
+    define('INI_DIR', realpath(__DIR__.'/../../'   ).'/' );
 ?>

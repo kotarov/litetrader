@@ -81,9 +81,10 @@
                             <label class="uk-form-label">Parent</label>
                             <div class="uk-form-controls"><select data-get="ajax.php?f=products/getCategories&getforselect" class="uk-width-1-1" name="id_parent"></select></div>
                             <script>$(document).on("category-changed", function(e,d){
+                                //e.preventDefault();
                                 var select = $("#modal-new-category [name=id_parent]").html("").append('<option value="0">-</option>');
                                 $.each(d.data, function(r,k){
-                                    select.append('<option value="'+k[0]+'">'+k[1]+'</option>');
+                                    select.append('<option value="'+k.id+'">'+(k.text||k.name)+'</option>');
                                 })
                             })</script>
                         </div>
@@ -128,7 +129,7 @@
                             <script>$(document).on("category-changed", function(e,d){
                                 var select = $("#modal-edit-category [name=id_parent]").html("").append('<option value="0">-</option>');
                                 $.each(d.data, function(r,k){
-                                    select.append('<option value="'+k[0]+'">'+k[1]+'</option>');
+                                    select.append('<option value="'+k.id+'">'+(k.text||k.name)+'</option>');
                                 })
                             })</script>
                         </div>
@@ -182,36 +183,6 @@
                 </div>
             </div>
 
-
-
-            <script>
-                /*$("form").on("submit",function(e){ 
-                    e.preventDefault();
-                    var $form = $(this);
-                    $form.find(".uk-form-danger").removeClass('uk-form-danger');
-
-                    $.post("ajax.php?f=products/"+$(this).attr('action'), $(this).serialize()).done(function(ret){
-                        $form.find(".uk-alert").remove();
-                        ret = $.parseJSON(ret);
-                        if(ret.required){
-                            $.each(ret.required, function(i,field){ $("[name='"+field+"']", $form).addClass("uk-form-danger"); });
-                            $form.prepend('<div class="uk-alert uk-alert-danger"><b>Fill down Required fields</b></div>').scrollTop();
-                        }else if(ret.error){
-                            $form.prepend('<div class="uk-alert uk-alert-danger"><b>'+ret.error+'</b></div>').scrollTop();
-                        }else if(ret.success){
-                            UIkit.modal($form.closest(".uk-modal")).hide();
-                            $(document).trigger("categories-changed", ret);
-                            //$("#categories").DataTable().ajax.reload();
-                            UIkit.notify(ret.success, "success");
-                        }
-                    });
-                });*/
-                /*
-                $.getJSON("ajax.php?f=products/getCategories").done(function(ret){
-                    $(document).trigger("categories-changed", ret);
-                });*/
-            </script>
-        
         </div>
         
         <script src="<?=$_ASSETS['application.js']?>"></script>

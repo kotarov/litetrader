@@ -102,7 +102,7 @@
                     
                     
                     <li id="profile">
-                        <form class="uk-form" action="<?=URL_BASE?>ajax.php?f=postUpdateProfile" method="post">
+                        <form class="uk-form" action="<?=URL_BASE?>ajax.php?f=customer/postUpdateProfile" method="post">
                         <h2>Profile summary</h2>
                         <dl id="personal-summary" class="uk-description-list uk-description-list-line uk-width-medium-1-2">
                             <dt>Name</dt>

@@ -26,6 +26,7 @@ if(!isset($ret['required'])){
     $sth = $dbh->prepare("UPDATE categories SET ".implode(",", $sets)." WHERE id = :id");
     $sth->execute($post);
     include 'prepareCategories.php';
+    $_GET['getforselect'] = 1;
     include 'getCategories.php';
     $ret['success'] = 'Category id='.$_REQUEST['id'].' changed.';
 }

@@ -21,7 +21,7 @@ if($post){
     foreach($post AS $k => $v){
         $sets[] = $k.' = :'.$k;
     }
-    $dbh = new PDO('sqlite:../sqlite/customers');
+    $dbh = new PDO('sqlite:'.DB_DIR.'customers');
     $sth = $dbh->prepare("UPDATE customers SET ".implode(', ',$sets)." WHERE id = ".$_SESSION['customer']['id']);
     $sth->execute($post);
     
