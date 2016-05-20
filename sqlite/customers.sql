@@ -61,6 +61,7 @@ CREATE TABLE order_statuses (
     is_default integer,
     name text,
     icon text,
+    color text,
     is_closed integer
 );
 
