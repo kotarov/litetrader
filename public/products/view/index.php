@@ -20,7 +20,7 @@
         <script src="<?=$_ASSETS['uikit.notify.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.dotnav.css']?>" />
         <script src="<?=$_ASSETS['uikit.slideset.js']?>"></script>
-        <!--script src="<?=$_ASSETS['uikit.modal.js']?>"></script -->
+        
         <!--script src="<?=$_ASSETS['uikit.lightebox.js']?>"></script-->
         
         <link  href="<?=$_ASSETS['dataTables.uikit.css']?>" rel="stylesheet">
