@@ -84,7 +84,7 @@ CREATE TABLE orders (
     price real,
     is_active integer,
     id_method integer,
-    method text,
+    method text
 );
 
 
