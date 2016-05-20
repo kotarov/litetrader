@@ -35,7 +35,7 @@
     <body id="page-tools"> 
         <?php include 'snipps/head.php'; ?>
         
-        <h2 class="page-header">Easy Updater</h2>
+        <h2 class="page-header">GitHub Updater</h2>
         <div class="uk-container">
         
         <p>Your version is: <b><?=$ver?></b></p>
