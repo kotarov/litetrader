@@ -3,7 +3,7 @@
 <html>
     <head>
         <title></title>
-        <link rel="shortcut icon" href="<?=URL_BASE?>img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="<?=URL_BASE?>img/favicon.png" type="image/x-icon">
         
         <script src="<?=$_ASSETS['jquery.js']?>"></script>
         
