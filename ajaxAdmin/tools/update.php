@@ -4,7 +4,7 @@ chdir(realpath(__DIR__.'/../../'));
 
 
 if(isset($_POST['update'])){
-	$command = 'origin master';
+	$command = 'pull origin master';
 }elseif(isset($_POST['reset'])){
 	$command = 'checkout --hard';
 }
