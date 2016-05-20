@@ -1,3 +1,47 @@
+<?php
+    $menu = array(
+        'home'=>array(
+            'title'=>'<i class="uk-icon-home"></i> Home',
+            'url'=>'index.php',
+            'data-active'=>'page-home'
+        ),
+        'products'=>array(
+            'title'=>'Products',
+            'url'=>'products.php',
+            'data-active'=>'page-products',
+            'children'=>array(
+                'products'=>array('title'=>'Products', 'url'=>'products.php'),
+                'categories'=>array( 'title'=>'Categories', 'url'=>'categories.php'),
+                '-1-'=>array(),
+                'measure-units'=>array( 'title'=>'Measure Units', 'url'=>'productsunits.php')
+            )
+        ),
+        'customers'=>array(
+            'title'=>'Customers',
+            'url'=>'customers.php',
+            'data-active'=>'page-customers',
+            'children'=>array(
+                'orders'=>array('title'=>'Sales Orders','url'=>'customersorders.php'),
+                'customers'=>array('title'=>'Customers', 'url'=>'customers.php'),
+                'companies'=>array('title'=>'Companies','url'=>'customerscompanies.php'),
+                '-1-'=>array(),
+                'statuses'=>array('title'=>'Order Statuses','url'=>'customersorderstatuses.php')
+            )
+        ),
+        'suppliers'=>array(
+            'title'=>'Suppliers',
+            'url'=>'suppliers.php',
+            'data-active'=>'page-supplier',
+            'children'=>array(
+                //'orders'=>array('title'=>'Purchase Orders','url'=>'suppliersorders.php'),
+                'customers'=>array('title'=>'Suppliers', 'url'=>'suppliers.php'),
+                'companies'=>array('title'=>'Companies','url'=>'supplierscompanies.php'),
+                //'-1-'=>array(),
+                ///'statuses'=>array('title'=>'Purchase Statuses','url'=>'suppliersorderstatuses.php')   
+            )
+        )
+    );
+?>
 <script>
     $.ajaxSetup({ dataFilter: function(data,type){
         try{var a = data; if(typeof data != "object") a=$.parseJSON(data); 
@@ -14,141 +58,49 @@
             <nav class="uk-navbar uk-margin-bottom1">
                 <a class="uk-navbar-brand uk-hidden-small" href="#"><?=$_COMPANY['name']?></a>
                 <ul class="uk-navbar-nav uk-hidden-small">
-                    
-                    <li data-active="page-home">
-                        <a href="index.php"><i class="uk-icon-home"></i> Home</a>
-                    </li>
-                    
-                    <li data-uk-dropdown data-active="page-products">
-                        <a href="products.php">Products <i class="uk-icon-caret-down"></i></a>
-                        <div class="uk-dropdown">
-                            <ul class="uk-nav uk-nav-navbar">
-                                <li><a href="products.php">Products</a></li>
-                                <li><a href="categories.php">Categories</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings"><a href="productsunits.php">Measure units</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li data-uk-dropdown data-active="page-customers">
-                        <a href="customers.php">Customers <i class="uk-icon-caret-down"></i></a>
-                        <div class="uk-dropdown">
-                            <ul class="uk-nav uk-nav-navbar">
-                                <li><a href="customersorders.php">Sales Orders</a></li>
-                                <li><a href="customers.php">Customers</a></li>
-                                <li><a href="customerscompanies.php">Companies</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings"><a href="customersorderstatuses.php">Order statuses</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li data-uk-dropdown data-active="page-suppliers">
-                        <a href="suppliers.php">Suppliers <i class="uk-icon-caret-down"></i></a>
-                        <div class="uk-dropdown">
-                            <ul class="uk-nav uk-nav-navbar">
-                                <li><i href="suppliersorders.php" class="uk-text-muted">&nbsp;&nbsp;&nbsp;&nbsp;Purchase Orders</i></li>
-                                <li><a href="suppliers.php">Suppliers</a></li>
-                                <li><a href="supplierscompanies.php">Companies</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings uk-text-muted">&nbsp;&nbsp;&nbsp;&nbsp;<i href="suppliersorderstatuses.php">Order statuses</i></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li data-active="page-tools" data-uk-dropdown>
-                        <a href="tools.php"><i class="uk-icon-wrench"></i> Tools</a>
-                        <div class="uk-dropdown">
-                            <ul class="uk-nav uk-nav-navbar">
-                                <li><a>Images</a></li>
-                                <li><a>Transltes</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
+                    <?php foreach($menu AS $k=>$v){
+                        if(isset($v['children'])){
+                            echo '<li data-uk-dropdown data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.$v['title'].' <i class="uk-icon-caret-down"></i></a>';
+                            echo '<div class="uk-dropdown"> <ul class="uk-nav uk-nav-navbar">';
+                            foreach($v['children'] AS $kk=>$ch ){
+                                if(substr($kk,0,1) == '-') echo '<li class="uk-nav-divider"></li>';
+                                else echo '<li><a href="'.$ch['url'].'">'.$ch['title'].'</a></li>';
+                            }
+                            echo '</ul></div></li>';
+                        }else{
+                            echo '<li data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.$v['title'].'</a></li>'; 
+                        }
+                        
+                    }?>
                 </ul>
                 <div class="uk-navbar-flip">
                     <ul class="uk-navbar-nav uk-hidden-small customer-nav-menu"></ul>
                 </div>
                 <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
                 <div class="uk-navbar-brand uk-navbar-center uk-visible-small">
-                   Your Brand
+                   <?=$_COMPANY['name']?>
                 </div>
             </nav>
             <div id="offcanvas" class="uk-offcanvas">
                 <div class="uk-offcanvas-bar uk-offcanvas-bar-show">
-                    <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Admin panel</div>
+                    <div class="uk-navbar-brand uk-navbar-center uk-visible-small uk-text-nowrap"><?=$_COMPANY['name']?></div>
                     <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-                        <li data-active="page-home">
-                            <a href="home.php"><i class="uk-icon-home"></i> Home</a>
-                        </li>
-                        
-                        <?php /*
-                        <li data-active="page-category" class="uk-parent">
-                            <a href="#">Test</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a>
-                                    <ul>
-                                        <li><a href="#">Sub item</a></li>
-                                        <li><a href="#">Sub item</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> */?>
-                        
-                        <li class="uk-nav-divider"></li>              
-                        
-                        <li data-active="page-products" class="uk-parent">
-                            <a href="#">Products</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="products.php" data-active="page-products">Products</a></li>
-                                <li><a href="categories.php" data-active="page-categories">Categories</a></li>    
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings"><a href="productsunits.php">Measure units</a></li>
-                            </ul>
-                        </li>
-                        
                         <li class="uk-nav-divider"></li>
-                        
-                        <li data-active="page-customers" class="uk-parent">
-                            <a href="#">Customers</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="customersorders.php">Sales Orders</a></li>
-                                <li><a href="customers.php">Customers</a></li>
-                                <li><a href="customerscompanies.php">Companies</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings"><a href="customersorderstatuses.php">Order statuses</a></li>
-                            </ul>
-                        </li>
-                         
-                        <li class="uk-nav-divider"></li>
-                         
-                        <li data-active="page-suppliers" class="uk-parent">
-                            <a href="#" >Suppliers</a>
-                            <ul class="uk-nav-sub">
-                                <li><i href="suppliersorders.php" class="uk-text-muted">Purchase Orders</i></li>
-                                <li><a href="suppliers.php">Suppliers</a>
-                                <li><a href="supplierscompanies.php">Companies</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li class="nav-settings uk-text-muted"><i href="suppliersorderstatuses.php">Order statuses</i></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="uk-nav-divider"></li>
-                         
-                        <li data-active="page-tools" class="uk-parent">
-                            <a href="#">Tools</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="images.php">Images</a></li>
-                                <li><a href="translate.php">Translate</a></li>
-                            </ul>
-                        </li>
-                        
-                        
-                        <li class="uk-nav-divider"></li>
-                        
+                        <?php foreach($menu AS $k=>$v){
+                            if(isset($v['children'])){
+                                echo '<li data-active="'.$v['data-active'].'" class="uk-parent">';
+                                echo '  <a href="#">'.$v['title'].'</a>';
+                                echo '  <ul class="uk-nav-sub">';
+                                foreach($v['children'] AS $kk=>$ch ){
+                                    if(substr($kk,0,1) == '-') echo '<li class=""></li>';
+                                    else echo '<li><a href="'.$ch['url'].'">'.$ch['title'].'</a></li>';
+                                }
+                                echo ' </ul></li>';
+                            }else{
+                                echo '<li data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.$v['title'].'</a></li>'; 
+                            }
+                             echo '<li class="uk-nav-divider"></li>'; 
+                        }?>
                         <li class="uk-nav customer-nav-menu"></li>
                     </ul>
                 </div>
