@@ -2,11 +2,18 @@
 $ret = array();
 chdir(realpath(__DIR__.'/../../'));
 
-$exec = shell_exec('git pull');
+
+if(isset($_POST['update'])){
+	$command = 'origin master';
+}elseif(isset($_POST['reset'])){
+	$command = 'checkout --hard';
+}
+
+$exec = shell_exec('/usr/bin/git '.$command);
 if($exec){
-    $ret['success'] = $exec;
+	$ret['success'] = $exec;
 }else{
-    $ret['error'] = 'Error';
+	$ret['error'] = 'Error';
 }
 $ret['data']['ver'] = file_get_contents("ver");
 

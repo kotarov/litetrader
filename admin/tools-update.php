@@ -41,10 +41,10 @@
         <p>Your version is: <b><?=$ver?></b></p>
         <p>GitHub avaible version is: <b><?=$new_ver?></b></p>
         
-        <br>
-        <hr>
-        <form class="uk-form" action="ajax.php?f=tools/update" >
-            <button class="uk-button uk-button-large"> Update ? </button> 
+
+		<form class="uk-form" action="ajax.php?f=tools/update" >
+            <button class="uk-button uk-button-large" name="update"> Update ? </button>
+			<button class="uk-button" name="reset"> Reset local changes </button>
         </form>
         
         <script src="<?=$_ASSETS['application.js']?>"></script>
