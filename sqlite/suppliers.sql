@@ -1,4 +1,4 @@
-/*
+
 DROP TABLE IF EXISTS `suppliers`;
 CREATE TABLE `suppliers` (
     id integer primary key, 
@@ -35,7 +35,7 @@ CREATE TABLE `suppliers_companies` (
     id_company integer,
     position text
 ); 
-*/
+
 DROP TABLE IF EXISTS `suppliers_products`;
 CREATE TABLE `suppliers_products` (
     id integer primary key,

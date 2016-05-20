@@ -1,4 +1,3 @@
-/*
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
     id integer primary key,
@@ -17,7 +16,7 @@ CREATE TABLE `products` (
     is_avaible integer,
     is_adv integer,
     url_rewrite text
-);*/
+);
 
 DROP TABLE IF EXISTS units;
 CREATE TABLE units (
@@ -37,7 +36,7 @@ INSERT INTO units (is_default,abbreviation,name,position) VALUES
     (null,'m2','Square meter',1), 
     (null,'m3','Cubic meter',1);
 
-/*
+
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
     id integer primary key,
@@ -57,8 +56,6 @@ CREATE TABLE categories (
 );
 
 
-*/
-/*
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
     id integer primary key, 
@@ -72,4 +69,3 @@ CREATE TABLE `images` (
     thumb blob,
     small blob
 ); 
-*/

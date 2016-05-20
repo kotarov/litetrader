@@ -14,10 +14,7 @@
 	<link  href="<?=$_ASSETS['uikit.notify.css']?>" rel="stylesheet" />
     <script src="<?=$_ASSETS['uikit.notify.js']?>"></script>
         
-    <?php /*
-    <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
-    <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
-    */?>
+    
     <style>
         
         html, body {background-color: #eee}
@@ -32,10 +29,6 @@
     </style>
 </head>
 <body>
-    <?php /*
-    <div id="progress" style="background:rgba(0,0,0,0.6);display:none" class="uk-position-cover uk-flex uk-flex-center uk-flex-middle">
-        <h3 style="color:#fff"><i class="uk-icon-refresh uk-icon-spin"></i>&nbsp; Processing ...</h3>
-    </div> */?>
     <div class="uk-vertical-align uk-text-center uk-height-1-1">
     <div class="uk-vertical-align-middle" style="width: 300px;">
         <br><br>
@@ -47,7 +40,7 @@
 				<input name="email" type="text" placeholder="Email" title="Email" class="uk-width-1-1 uk-form-large">
 			</div>
 			<div class="uk-form-controls uk-form-row uk-grid">
-				<input name="password" type="password" placeholder="Passwords" title="Password" class="uk-width-1-1 uk-form-large">
+				<input name="password" type="password" placeholder="Passwords" title="Password" class="uk-width-1-1 uk-form-large" value="">
 			</div>
 			<div class="uk-form-controls uk-form-row uk-grid">
 				<button class="uk-button uk-button-primary uk-width-1-1  uk-button-large">Login</button>

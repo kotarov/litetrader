@@ -1,4 +1,4 @@
-/*
+
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
     id integer primary key, 
@@ -102,7 +102,7 @@ CREATE TABLE orders_products (
     date_add integer,
     is_closed integer
 );
-/*
+
 DROP TABLE IF EXISTS orders_statuses;
 CREATE TABLE orders_statuses (
     id integer primary key,
@@ -112,4 +112,4 @@ CREATE TABLE orders_statuses (
     user text,
     date_add integer
 );
-*/
+
