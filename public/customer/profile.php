@@ -5,9 +5,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
+        <title>Profile</title>
+        <link rel="shortcut icon" href="<?=URL_BASE?>img/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="<?=URL_BASE?>img/apple-touch-icon.png">
         
         <script src="<?=$_ASSETS['jquery.js']?>"></script>
         

@@ -3,10 +3,8 @@
 if (!function_exists('base_url')) { function base_url(){   
     $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']!='off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO']=='https')) ? 'https://' : 'http://';
     
-    $tmpURL = str_replace(chr(92),'/',__DIR__);
+    $tmpURL = str_replace(chr(92),'/',realpath(__DIR__.'/../'));
     $tmpURL = trim(str_replace($_SERVER['DOCUMENT_ROOT'],'',$tmpURL),'/');
-    $tmpURL = explode('/',$tmpURL);
-    $tmpURL = $tmpURL[0].(isset($tmpURL[1])?'/'.$tmpURL[1]:'');
 
     if ($tmpURL !== $_SERVER['HTTP_HOST']) $base_url .= $_SERVER['HTTP_HOST'].'/'.$tmpURL.'/';
     else $base_url .= $tmpURL.'/';
