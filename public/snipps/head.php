@@ -1,3 +1,9 @@
+<?php 
+
+$NO_ENCODE = true;
+$menu = include __DIR__.'/../../ajax/getMenu.php';
+//print_r($menu);exit;
+?>
 
         <div class="uk-container uk-container-center uk-margin-large-bottom">
             <div class="uk-panel uk-margin-top">
@@ -44,16 +50,27 @@
 
             <!-- menu -->
             <nav class="uk-navbar uk-margin-bottom">
-                <!--a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">Brand</a-->
                 <ul class="uk-navbar-nav uk-hidden-small">
                     <li data-active="page-home">
                         <a href="<?=URL_BASE?>home/"><i class="uk-icon-home"></i> Home</a>
                     </li>
+
     
-                    <li data-active="page-products" >
+                    <li data-active="page-products" data-uk-dropdown>
                             <a href="<?=URL_BASE?>products/" class="uk-button-dropdown" aria-haspopup="true" data-uk-dropdown="" aria-expanded="falae" >Products</a>
                             <div class="uk-dropdown uk-dropdown-width-3 uk-dropdown-bottom" style="top: 30px; left: 0px;">
-                                <div id="categories-menu-list" class="uk-grid uk-dropdown-grid"></div>
+                                <div class="uk-grid uk-dropdown-grid">
+                                    <?php foreach($menu['data'] AS $r=>$m){ ?>
+                                        <div class="uk-width-1-3">
+                                            <a class="uk-text-primary" href="<?=URL_BASE.'products'.$m['url_rewrite']?>"><?=$m['name']?></a>
+                                            <ul class="uk-nav uk-nav-dropdown uk-panel">
+                                                <?php foreach($menu['l2'][$m['id']] as $kk=>$mm) { ?>
+                                                <li><a href="<?=URL_BASE.'products'.$mm['url_rewrite']?>"><?=$mm['name']?></a></li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                     </li>
                     <li data-active="page-contacts">
@@ -65,25 +82,6 @@
                     </li>
                     
                 </ul>
-                <script>
-                    $.getJSON("<?=URL_BASE?>ajax.php?f=getMenu").done(function(ret){
-                        $.each(ret.data,function(k,v){
-                            var sub = '<ul class="uk-nav uk-nav-dropdown uk-panel">';
-                            $.each(ret['l2'][v.id],function(r2,v2){
-                                sub += '<li><a href="<?=URL_BASE?>products'+v2.url_rewrite+'">'+v2.name+'</a></li>'
-                            });
-                            sub += '</ul>';
-                            
-                            $("#categories-menu-list").append(''
-                            +'  <div class="uk-width-1-3">'
-                            +'      <a href="<?=URL_BASE?>products'+v.url_rewrite+'">'+v.name+'</a>'
-                            +'      '+sub
-                            +'  </div>'
-                            );
-                        });
-                    });
-                </script>
-                
                 
                 
                 <div class="uk-navbar-flip">
@@ -115,9 +113,14 @@
                         <li data-active="page-category" class="uk-parent">
                             <a href="#">Products</a>
                             <ul class="uk-nav-sub" >
-                                <li class="uk-margin-left"><a href="#">Sub category 1</a></li>
-                                <li class="uk-margin-left"><a href="#">Sub cat 2</a></li>
-                                <li class="uk-margin-left"><a href="#">Sub cat 3</a></li>
+                                <?php foreach($menu['data'] AS $k=>$m){ ?>
+                                    <li class="uk-margin-left">
+                                        <a class="uk-text-primary" href="<?=URL_BASE.'products'.$m['url_rewrite']?>"><?=$m['name']?></a>
+                                        <?php foreach($menu['l2'][$m['id']] AS $kk=>$mm){ ?>
+                                            <a class="uk-margin-left" href="<?=URL_BASE.'products'.$mm['url_rewrite']?>"><?=$mm['name']?></a>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </li>
 

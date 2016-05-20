@@ -62,7 +62,7 @@
         <div class="uk-margin-large-bottom">
 
             <!-- menu -->
-            <nav class="uk-navbar uk-margin-bottom1">
+            <nav class="uk-navbar">
                 <a class="uk-navbar-brand uk-hidden-small" href="#"><?=$_COMPANY['name']?></a>
                 <ul class="uk-navbar-nav uk-hidden-small">
                     <?php foreach($menu AS $k=>$v){
