@@ -1,5 +1,5 @@
 <?php
-    $exp = 2592000;  //30days (60sec * 60min * 24hours * 30days)
+    if(!isset($exp)) $exp = 2592000;  //30days (60sec * 60min * 24hours * 30days)
     header("Cache-Control: max-age=$exp"); 
     header("Expires:".date("D, M j G:i:s",(time()+$exp)) );
     header("pragma:cache");

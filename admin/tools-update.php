@@ -1,8 +1,8 @@
 <?php 
-    $_ASSETS = parse_ini_file('../../assets.ini');
-    $_COMPANY = parse_ini_file('../../company.ini'); 
-    $ver = file_get_contents('../../ver');
-    $new_ver = file_get_contents('https://raw.githubusercontent.com/kotarov/litetrader/master/ver');
+    $exp = 0;
+    include 'snipps/init.php';
+    $ver = (float)file_get_contents('../ver');
+    $new_ver = (float)file_get_contents('https://raw.githubusercontent.com/kotarov/litetrader/master/ver');
 ?>
 <!DOCTYPE html>
 <html class="uk-height-1-1">
@@ -28,26 +28,28 @@
         <script src="<?=$_ASSETS['dataTables.uikit.js']?>"></script>
         <script src="<?=$_ASSETS['dataTables.buttons.js']?>"></script>
         
-        <link  href="../<?=$_ASSETS['application.css']?>" rel="stylesheet">
-        <link  href="../<?=$_ASSETS['theme.css']?>" rel="stylesheet">
+        <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
+        <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
     </head>
     
     <body id="page-tools"> 
-        <?php //include '../snipps/head.php'; ?>
+        <?php include 'snipps/head.php'; ?>
         
-        <h2 class="page-header">Update</h2>
+        <h2 class="page-header">Easy Updater</h2>
         <div class="uk-container">
         
         <p>Your version is: <b><?=$ver?></b></p>
-        <p>Avaible last version is: <b><?=$new_ver?></b></p>
+        <p>GitHub avaible version is: <b><?=$new_ver?></b></p>
         
-        <form class="uk-form">
+        <br>
+        <hr>
+        <form class="uk-form" action="ajax.php?f=tools/update" >
             <button class="uk-button uk-button-large"> Update ? </button> 
         </form>
         
-        <?php /* <script src="../<?=$_ASSETS['application.js']?>"></script> */ ?>
+        <script src="<?=$_ASSETS['application.js']?>"></script>
         
         </div>
-        <?php //include '../snipps/foot.php'; ?>
+        <?php include 'snipps/foot.php'; ?>
     </body>
 </html>

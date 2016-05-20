@@ -44,7 +44,7 @@
             'title'=>'<i class="uk-icon-wrench"></i> Tools',
             'data-active'=>'page-tools',
             'children'=>array(
-                'update'=>array('title'=>'Update','url'=>'tools/update.php')    
+                'update'=>array('title'=>'Update','url'=>'tools-update.php')    
             )
         )
     );
