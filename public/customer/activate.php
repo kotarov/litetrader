@@ -1,4 +1,4 @@
-<?php include 'snipps/init.php'; ?>
+<?php include '../snipps/init.php'; ?>
 <!DOCTYPE html>
 <html class="uk-height-1-1">
 
@@ -6,10 +6,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Customer Login</title>
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-        <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
+        <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="../img/apple-touch-icon.png">
         
-        <script src="<?=$_ASSETS['jquery.js']?>"></script>
+        <script src="../<?=$_ASSETS['jquery.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.css']?>" />
     </head>
 
@@ -22,7 +22,7 @@
                 <div class="uk-width-1-1">
                     <i class="uk-icon-user-times uk-margin-bottom uk-text-primary" style="font-size:6em"></i>
                     <br>
-                    <form method="post" action="ajax.php?f=postActivate">
+                    <form method="post" action="../ajax.php?f=postActivate">
                         <div class="uk-form-row">
                             <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Email" name="email" value="<?=isset($_GET['email'])?$_GET['email']:''?>">
                         </div>
@@ -34,7 +34,7 @@
                         </div>
                     </form>
                     <div class="uk-margin-top">
-                     <a href="index.php"><i class="uk-icon-home"></i> Home page</a>
+                     <a href="../index.php"><i class="uk-icon-home"></i> Home page</a>
                     </div>
                 
                 

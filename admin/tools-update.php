@@ -44,7 +44,7 @@
 
 		<form class="uk-form" action="ajax.php?f=tools/update" >
             <button class="uk-button uk-button-large" name="update"> Update ? </button>
-			<button class="uk-button" name="reset"> Reset local changes </button>
+			<?php /* <button class="uk-button" name="reset"> Reset local changes </button> */ ?>
         </form>
         
         <script src="<?=$_ASSETS['application.js']?>"></script>

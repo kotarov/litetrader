@@ -1,0 +1,10 @@
+[20-May-2016 07:36:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function execute() on boolean in /home/ubuntu/workspace/lite/ajaxAdmin/customers/orders/getStatuses.php:16
+Stack trace:
+#0 /home/ubuntu/workspace/lite/admin/ajax.php(14): include()
+#1 {main}
+  thrown in /home/ubuntu/workspace/lite/ajaxAdmin/customers/orders/getStatuses.php on line 16
+[20-May-2016 07:39:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function execute() on boolean in /home/ubuntu/workspace/lite/ajaxAdmin/customers/orders/getStatuses.php:16
+Stack trace:
+#0 /home/ubuntu/workspace/lite/admin/ajax.php(14): include()
+#1 {main}
+  thrown in /home/ubuntu/workspace/lite/ajaxAdmin/customers/orders/getStatuses.php on line 16

@@ -1,0 +1,12 @@
+[20-May-2016 13:47:01 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [14] unable to open database file in /home/ubuntu/workspace/lite/ajax/login/postSignup.php:23
+Stack trace:
+#0 /home/ubuntu/workspace/lite/ajax/login/postSignup.php(23): PDO->__construct('sqlite:../sqlit...')
+#1 /home/ubuntu/workspace/lite/public/ajax.php(10): include('/home/ubuntu/wo...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/lite/ajax/login/postSignup.php on line 23
+[20-May-2016 13:53:51 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [14] unable to open database file in /home/ubuntu/workspace/lite/ajax/login/postLogin.php:18
+Stack trace:
+#0 /home/ubuntu/workspace/lite/ajax/login/postLogin.php(18): PDO->__construct('sqlite:../sqlit...')
+#1 /home/ubuntu/workspace/lite/public/ajax.php(10): include('/home/ubuntu/wo...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/lite/ajax/login/postLogin.php on line 18

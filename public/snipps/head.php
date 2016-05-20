@@ -1,3 +1,4 @@
+
         <div class="uk-container uk-container-center uk-margin-large-bottom">
             <div class="uk-panel uk-margin-top">
                 <div class="uk-float-left"><h1><?=$_COMPANY['name']?></h1></div>
@@ -27,16 +28,13 @@
                 <script>
                     $(document).on("shopping-cart-changed", function(e, cart){
                         if(cart.nb > 0){
-                            //$("#shopping-cart").hide();
                             $("#shcart-badge").html(cart.nb).show();
                             $("#shcart-price").html(cart.total.toFixed(2)).show();
-                            //$("#shopping-cart").fadeIn("slow");
                         }else{
                             $("#shcart-badge").html("").hide();
                             $("#shcart-price").html("").hide();
                         }
                     });
-                    //$.getJSON("<?=URL_BASE?>ajax.php?f=cart/getCart",function(cart){ $(document).trigger("shopping-cart-changed",cart);});
                 </script>
                 <!-- //shopping cart -->
                 
@@ -49,53 +47,13 @@
                 <!--a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">Brand</a-->
                 <ul class="uk-navbar-nav uk-hidden-small">
                     <li data-active="page-home">
-                        <a href="<?=URL_BASE?>index.php"><i class="uk-icon-home"></i> Home</a>
+                        <a href="<?=URL_BASE?>home/"><i class="uk-icon-home"></i> Home</a>
                     </li>
     
-                    
-                    <li data-active="page-products" class="uk-button-dropdown" data-uk-dropdown="" aria-haspopup="true" aria-expanded="falae">
-                            <a href="<?=URL_BASE?>products/" class="uk-button">Products</a>
+                    <li data-active="page-products" >
+                            <a href="<?=URL_BASE?>products/" class="uk-button-dropdown" aria-haspopup="true" data-uk-dropdown="" aria-expanded="falae" >Products</a>
                             <div class="uk-dropdown uk-dropdown-width-3 uk-dropdown-bottom" style="top: 30px; left: 0px;">
-        
-                                <div id="categories-menu-list" class="uk-grid uk-dropdown-grid">
-                                    <?php /*
-                                    <div class="uk-width-1-3">
-        
-                                        <ul class="uk-nav uk-nav-dropdown uk-panel">
-                                            <li><a href="#">Item</a></li>
-                                            <li><a href="#">Another item</a></li>
-                                            <li class="uk-nav-header">Header</li>
-                                            <li><a href="#">Item</a></li>
-                                            <li><a href="#">Another item</a></li>
-                                            <li class="uk-nav-divider"></li>
-                                            <li><a href="#">Separated item</a></li>
-                                        </ul>
-        
-                                        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur <a href="">adipisicing</a> elit, sed do eiusmod tempor incididunt.</div>
-        
-                                    </div>
-                                    <div class="uk-width-1-3">
-        
-                                        <ul class="uk-nav uk-nav-dropdown uk-panel">
-                                            <li><a href="#">Item</a></li>
-                                            <li><a href="#">Another item</a></li>
-                                            <li class="uk-nav-header">Header</li>
-                                            <li><a href="#">Item</a></li>
-                                            <li><a href="#">Another item</a></li>
-                                            <li class="uk-nav-divider"></li>
-                                            <li><a href="#">Separated item</a></li>
-                                        </ul>
-        
-                                        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur <a href="">adipisicing</a> elit, sed do eiusmod tempor incididunt.</div>
-        
-                                    </div>
-                                    <div class="uk-width-1-3">
-                                        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur <a href="">adipisicing</a> elit, sed do eiusmod tempor incididunt.</div>
-                                        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur <a href="">adipisicing</a> elit, sed do eiusmod tempor incididunt.</div>
-                                    </div>
-                                    */ ?>
-                                </div>
-        
+                                <div id="categories-menu-list" class="uk-grid uk-dropdown-grid"></div>
                             </div>
                     </li>
                     <li data-active="page-contacts">
@@ -140,38 +98,37 @@
                     </form>
                 </div>
             </nav>
+            
             <div id="offcanvas" class="uk-offcanvas">
                 <div class="uk-offcanvas-bar uk-offcanvas-bar-show">
                     <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
                         <li>
                             <form class="uk-search">
-                                <input class="uk-search-field" type="search" placeholder="search...">
+                                <input class="uk-search-field" type="search" placeholder="Search...">
                             </form>
                         </li>
+
                         <li data-active="page-home">
                             <a href="<?=URL_BASE?>home/">Home</a>
                         </li>
-                        
+
                         <li data-active="page-category" class="uk-parent">
                             <a href="#">Products</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a>
-                                    <ul>
-                                        <li><a href="#">Sub item</a></li>
-                                        <li><a href="#">Sub item</a></li>
-                                    </ul>
-                                </li>
+                            <ul class="uk-nav-sub" >
+                                <li class="uk-margin-left"><a href="#">Sub category 1</a></li>
+                                <li class="uk-margin-left"><a href="#">Sub cat 2</a></li>
+                                <li class="uk-margin-left"><a href="#">Sub cat 3</a></li>
                             </ul>
                         </li>
-                        
-                                      
+
                         <li data-active="page-contacts">
                             <a href="<?=URL_BASE?>contacts/">Contacts</a>
                         </li>
-                        
+
+                        <li data-active="page-order">
+                            <a href="<?=URL_BASE?>order/">Order</a>
+                        </li>
                         <li class="uk-nav-divider"></li>
-                        
                         <li>
                             <ul class="uk-nav customer-nav-menu">
                                 <li><a href="<?=URL_BASE?>customer/">Login</a></li>
@@ -186,7 +143,7 @@
                     if($("body").attr("id") == "page-profile") active = ' class="uk-active"'
                     $(".customer-nav-menu").html(''
                         +'<li'+active+'><a href="<?=URL_BASE?>customer/profile.php"> '+ d.name+' '+ d.family +' </a></li>'
-                        +'<li><a onclick="$.get(\'<?=URL_BASE?>ajax.php?f=postLogout\').done(window.location.replace(\'<?=URL_BASE?>home/\'))"><i class="uk-icon-power-off"></i> Exit</a></li>'
+                        +'<li><a onclick="$.get(\'<?=URL_BASE?>ajax.php?f=login/postLogout\').done(window.location.replace(\'<?=URL_BASE?>home/\'))"><i class="uk-icon-power-off"></i> Exit</a></li>'
                     );
                 }});
                 $("[data-active='"+$("body").attr("id")+"']").addClass("uk-active");

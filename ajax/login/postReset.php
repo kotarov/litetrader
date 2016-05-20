@@ -10,7 +10,7 @@ if(!$post['email'])      $ret['required'][]='email';
 if(!isset($ret['required'])){
     $dbh = new PDO('sqlite:../sqlite/customers');
     
-    $sth = $dbh->prepare("SELECT id FROM customers WHERE email LIKE :email AND `disabled` = 0");
+    $sth = $dbh->prepare("SELECT id FROM customers WHERE email LIKE :email AND `is_active` = 1");
     $sth->execute( $post );
     $exists = $sth->fetch(PDO::FETCH_COLUMN) ;
     

@@ -15,14 +15,14 @@ if(!isset($ret['required'])){
     $post['onelogin_time'] = time() - (60 * 30); // 30 min
     $post['password'] = md5($post['password']);
 
-    $dbh = new PDO('sqlite:../sqlite/customers');
+    $dbh = new PDO('sqlite:../../sqlite/customers');
     
     $sql = "SELECT id FROM customers WHERE email LIKE :email "
             ."AND (password LIKE :password "
                 ."OR ( onelogin_pass LIKE :onelogin_pass AND onelogin_time > :onelogin_time)"
             .") "
-            ."AND disabled < 1"
-    ;
+            ."AND is_active = 1";
+    
     $sth = $dbh->prepare($sql);
     $sth->execute( $post );
     $exists = $sth->fetch(PDO::FETCH_COLUMN) ;

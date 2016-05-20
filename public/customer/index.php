@@ -44,7 +44,7 @@
                         <br>
                         <i class="uk-icon-user uk-border-circle uk-margin-bottom" style="font-size:6em;padding:0.1em 0.2em;color:#f5f5f5;background:#fff"></i>
                         <br><br>
-                        <form id="login-form" class="uk-form" method="post" action="postLogin">
+                        <form id="login-form" class="uk-form" method="post" action="login/postLogin">
                             <div class="uk-form-row">
                                 <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Email" name="email">
                             </div>
@@ -68,7 +68,7 @@
                         <h3 class="uk-margin-bottom">You don't have an account ?</h3>
                         <p>Just fill this simple form.</p>
                         
-                        <form id="signup-form" class="uk-form" method="post" action="postSignup">
+                        <form id="signup-form" class="uk-form" method="post" action="login/postSignup">
                             
                             <div class="uk-grid uk-form-row" style="margin-left:0">
                                 <input class="uk-width-1-2 uk-form-large" type="text" placeholder="Name*" name="name">
@@ -106,7 +106,7 @@
                         <div class="uk-panel uk-panel-box ">
                             <h3>Forgot your password ?</h3>
                         
-                            <form id="reset-password" class="uk-form" method="post" action="postReset">
+                            <form id="reset-password" class="uk-form" method="post" action="login/postReset">
                                 <div class="uk-form-row">
                                     <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Email" name="email">
                                 </div>

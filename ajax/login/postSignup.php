@@ -20,7 +20,7 @@ if(!$post['city'])      $ret['required'][]='city';
 if(!$post['address'])   $ret['required'][]='address';
 
 if(!isset($ret['required'])){
-    $dbh = new PDO('sqlite:../sqlite/customers');
+    $dbh = new PDO('sqlite:../../sqlite/customers');
     $sth = $dbh->prepare("SELECT id FROM customers WHERE email LIKE :email");
     $sth->execute( array('email'=>$post['email'] ));
     $exists = $sth->fetch(PDO::FETCH_COLUMN);
@@ -32,6 +32,8 @@ if(!isset($ret['required'])){
         $post['date_add'] = time();
         $post['disabled'] = substr(str_shuffle(md5(time())),0,25);    
         
+        //print_r($post);exit;
+        
         $urlActivate = rtrim($_SERVER['HTTP_ORIGIN'],'/').'/'.ltrim(dirname($_SERVER['REQUEST_URI']),'/').'/activate.php';
         $urlParams = '?email='.$post['email'].'&key='.$post['disabled'];
         
@@ -40,7 +42,7 @@ if(!isset($ret['required'])){
         $sth->execute($post);
         
     
-        include '../lib/SMTPMailer.php';
+        include '../../lib/SMTPMailer.php';
         if(sendmail( $post['email'], 
                 'Activate your account',
                 'Your account was created successful. <br> Befor login You need to activate. <br>'
