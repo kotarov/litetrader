@@ -8,7 +8,7 @@ if($exec){
 }else{
     $ret['error'] = 'Error';
 }
-$ret['data']['ver'] = file_get_contents("../../ver");
+$ret['data']['ver'] = file_get_contents("ver");
 
 chdir(__DIR__);
 return json_encode($ret);
