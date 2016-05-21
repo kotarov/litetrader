@@ -27,7 +27,7 @@
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
     </head>
     
-    <body id="page-categories"> 
+    <body id="page-products"> 
         <?php include 'snipps/head.php'; ?>
         
         <h2 class="page-header">Product categories</h2>
