@@ -42,6 +42,7 @@
             $("#categories").DataTable({
             	dom: '<"uk-float-right uk-margin-left"B>ti',
             	ajax: "ajax.php?f=products/getCategories",
+            	paginate: false,
             	stateSave: true,
             	searching: false,
             	ordering: false,
