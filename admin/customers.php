@@ -38,7 +38,7 @@
     <body id="page-customers"> 
         <?php include 'snipps/head.php'; ?>
     
-        <h2 class="page-header">Customers <span class="uk-margin-left page-sparkline" data-table="suppliers"></span></h2>
+        <h2 class="page-header">Customers <span class="uk-margin-left page-sparkline" data-table="customers"></span></h2>
         <div class="uk-container">
     
         <table id="customers" class="uk-table uk-table-hover uk-table-striped uk-table-condensed" cellspacing="0" width="100%"

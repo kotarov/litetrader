@@ -11,23 +11,23 @@ $year = date("Y");
 $charts = array(
     'customers_orders'=>array(
         'db'=>'customers',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM orders WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM orders WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new orders'),
     ),
     'customers'=>array(
         'db'=>'customers',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM customers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo",
-        'sets'=>array( 'tooltipSuffix'=>'new customers'),
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM customers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
+        'sets'=>array( 'tooltipSuffix'=>'new registered customers'),
     ),
     'products'=>array(
         'db'=>'products',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM products WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM products WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new products'),
     ),
     'suppliers'=>array(
         'db'=>'suppliers',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM suppliers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo",
-        'sets'=>array( 'tooltipSuffix'=>'new suppliers'),
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM suppliers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
+        'sets'=>array( 'tooltipSuffix'=>'new registered suppliers'),
     )
 );
 
@@ -41,12 +41,17 @@ if(isset($charts[$get['m']])){
     ),$charts[$get['m']]['sets']);
 
     $dbh = new PDO('sqlite:'.DB_DIR.$charts[$get['m']]['db']);
-    $d = $dbh->query($charts[$get['m']]['sql'])->fetchAll(PDO::FETCH_NUM);
+    $d = $dbh->query($charts[$get['m']]['sql'])->fetchAll(PDO::FETCH_ASSOC);
     
+    $ret['data'] = array(null,null,null,null,null,null,null,null,null,null,null,null);
+    $c_m = date('m');
     for($i=0;$i<13;$i++){
-        if(isset($d[$i])) $ret['data'][$i] = $d[$i][0];
-        else $ret['data'][$i]=null;
+        if($i < $c_m) $ret['data'][$i] = 0;
+        else $ret['data'][$i] = null;
     }
-    //$ret['data'] = array(5,3,8,9,10,null,null,null,null,null,null,null,null);
+    
+    foreach($d AS $k=>$v){
+        $ret['data'][(int)$v['mo']] = $v['num'];
+    }
 }
 return json_encode($ret);

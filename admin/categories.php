@@ -82,7 +82,6 @@
                             <label class="uk-form-label">Parent</label>
                             <div class="uk-form-controls"><select data-get="ajax.php?f=products/getCategories&getforselect" class="uk-width-1-1" name="id_parent"></select></div>
                             <script>$(document).on("category-changed", function(e,d){
-                                //e.preventDefault();
                                 var select = $("#modal-new-category [name=id_parent]").html("").append('<option value="0">-</option>');
                                 $.each(d.data, function(r,k){
                                     select.append('<option value="'+k.id+'">'+(k.text||k.name)+'</option>');
