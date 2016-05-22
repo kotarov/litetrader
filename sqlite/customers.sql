@@ -64,6 +64,8 @@ CREATE TABLE order_statuses (
     color text,
     is_closed integer
 );
+INSERT INTO order_statuses (is_default,name,icon,color,is_closed) VALUES (1,'New order','uk-icon-envelope','#000000',null);
+
 
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (

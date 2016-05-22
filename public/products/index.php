@@ -41,9 +41,9 @@
             url = decodeURIComponent(window.location).split("/");
             id = parseInt(url[ url.length-2 ].split("-")[0], 10);
             $.getJSON("<?=URL_BASE?>ajax.php?f=getCategories&id="+id).done(function(ret){
-                $(".uk-breadcrumb").html('<li><a data-live href="<?=URL_BASE?>products/"><i class="uk-icon-home"></i> Home</a></li>');
+                $(".uk-breadcrumb").html('<li><a data-live href="<?=URL_BASE.URL_PRODUCTS?>/"><i class="uk-icon-home"></i> Home</a></li>');
                 $.each(ret.parents, function(k,v){
-                    $(".uk-breadcrumb").append('<li><a data-live href="<?=URL_BASE?>products'+v.url_rewrite+'">'+v.name+'</a></li>');
+                    $(".uk-breadcrumb").append('<li><a data-live href="<?=URL_BASE.URL_PRODUCTS?>'+v.url_rewrite+'">'+v.name+'</a></li>');
                 });
                 if(typeof ret.current.name !== "undefined") $(".uk-breadcrumb").append('<li><span>'+ret.current.name+'</span></li>');
                 
@@ -53,7 +53,7 @@
                     +'<div class="uk-width-medium-1-2 uk-width-large-1-3">'
                         +'<div class="uk-panel uk-panel-hover uk-panel-header">'
                             +'<div class="uk-panel-badge uk-badge">'+v.num+'</div>'
-                            +'<h3 class="uk-panel-title"><a data-live href="<?=URL_BASE?>products'+v.url_rewrite+'">'+v.title+'</a></h3>'
+                            +'<h3 class="uk-panel-title"><a data-live href="<?=URL_BASE.URL_PRODUCTS?>'+v.url_rewrite+'">'+v.title+'</a></h3>'
                             +'<p>'+v.description+'</p>'
                         +'</div>'
                     +'</div>'
@@ -63,7 +63,7 @@
                 $("#products").html("");
                 $.each(ret.data, function(r,p){
                     $("#products").append(''
-                        +'<a class="uk-thumbnail uk-thumbnail-mini" href="<?=URL_BASE?>products/view'+p.url_rewrite+''+p.id+'-'+p.name.replace(/\ /g,"-")+'/">'
+                        +'<a class="uk-thumbnail uk-thumbnail-mini" href="<?=URL_BASE.URL_PRODUCT?>'+p.url_rewrite+''+p.id+'-'+p.name.replace(/\ /g,"-")+'/">'
                             +'<img src="<?=URL_BASE?>image.php/'+p.id_image+'/small/'+p.date_add+'" alt="">'
                             +'<div class="uk-thumbnail-caption">'
                                 +'<div>'+p.name+'</div>'

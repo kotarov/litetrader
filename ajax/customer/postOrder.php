@@ -15,6 +15,7 @@ if(!$post['address']) $ret['required'][] = 'address';
 if(!$post['city']) $ret['required'][] = 'city';
 if(!$post['customer']) $ret['required'][]='customer';
 if(!$post['phone']) $ret['required'][] = 'phone';
+if(!$post['email']) $ret['required'][] = 'email';
 if(!$post['method']) $ret['required'][] = 'choose-method';
 if(!isset($_SESSION['cart']) || !count($_SESSION['cart'])) $ret['required'][] = 'cart-container';
 
