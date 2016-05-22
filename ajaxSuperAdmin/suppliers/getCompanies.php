@@ -8,8 +8,8 @@ $sth = $dbh->prepare("SELECT
     c.name,
     c.email,
     c.phone,
-    c.mrp,
-    c.ein,
+    c.skype,
+    c.facebook,
     c.city || '; '|| c.address,
     c.id actions,
     (SELECT COUNT(*) FROM suppliers_companies WHERE id_company = c.id ) nb_employees    
