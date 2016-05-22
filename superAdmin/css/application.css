@@ -1,0 +1,39 @@
+
+/* UI pre Modified */
+.uk-container { width:100%;margin:auto; padding:1em;box-sizing:border-box;}
+.uk-modal-footer { text-align:right}
+thead th.sorting, thead th.sorting_desc, thead th.sorting_asc {cursor:pointer}
+.uk-table > tbody { border-style: solid; border-color:#aaa; border-width:1px 0;}
+td { vertical-align: middle!important; }
+td.actions a {padding:0.4em;}
+tfoot td.sum, tfoot th.sum {font-style:normal; font-size:1.2em;}
+.uk-modal-dialog-small { width: 420px}
+.uk-dropdown {box-shadow: 5px 5px 5px rgba(0,0,0,0.05) }
+sup.uk-badge {font-size:0.6em;position:relative;top:-1em;left:-1em;padding:0 0.3em; line-height:1.5em;}
+[readonly] {background:transparent!important;border-color:#efefef!important;}
+@media (min-width: 960px){
+    .uk-form-horizontal .uk-form-label { width: 120px}
+    .uk-form-horizontal .uk-form-controls { margin-left: 135px; }
+}
+.uk-navbar-brand {max-width:100%}
+
+/* New */
+.page-header {
+    margin-top: 0;
+    padding: 0.5em 1em;
+    background: #f5f5f5;
+}
+
+/*** select 2 */
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple 
+{ border-color: #ddd; border-radius:0;}
+
+.select2-search__field { height:22px!important;}
+
+
+
+
+/******/
+

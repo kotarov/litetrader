@@ -1,0 +1,25 @@
+html, body, .uk-modal-dialog { background: #fafafa}
+.uk-tab .uk-active>a{background:#fafafa!important}
+
+.uk-navbar {  background:#186fa8; color:#fff }
+.uk-navbar  li > a {color:#fff}
+.uk-navbar .uk-dropdown li > a {color:#000}
+.uk-navbar .uk-dropdown li > a:hover {color:#fff}
+.uk-navbar-brand {color:#ddd}
+.uk-navbar-toggle {color:#fff}
+.uk-navbar-toggle:focus, .uk-navbar-toggle:hover{color:#ddd}
+.uk-navbar-brand:focus, .uk-navbar-brand:hover{color:#fff}
+
+.uk-navbar-nav .uk-active>a {background:#2980B9!important;color:#fff!important}
+.uk-button-primary {background-color:#186fa8}
+.uk-button-primary:hover, 
+.uk-button-primary:focus,
+.uk-pagination>.uk-active>span
+{ background-color: #2980B9!important}
+.uk-text-primary {color:#186Fa8!important}
+
+.page-sparkline > canvas{
+    border-color: #ddd;
+    border-style: dotted;
+    border-width: 0 0 1px 1px;
+}
