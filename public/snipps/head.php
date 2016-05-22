@@ -62,10 +62,10 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
                                 <div class="uk-grid uk-dropdown-grid">
                                     <?php foreach($menu['data'] AS $r=>$m){ ?>
                                         <div class="uk-width-1-3">
-                                            <a class="uk-text-primary" href="<?=URL_BASE.'products'.$m['url_rewrite']?>"><?=$m['name']?></a>
+                                            <a class="uk-text-primary" href="<?=URL_BASE.URL_PRODUCTS.$m['url_rewrite']?>"><?=$m['name']?></a>
                                             <ul class="uk-nav uk-nav-dropdown uk-panel">
                                                 <?php foreach($menu['l2'][$m['id']] as $kk=>$mm) { ?>
-                                                <li><a href="<?=URL_BASE.'products'.$mm['url_rewrite']?>"><?=$mm['name']?></a></li>
+                                                <li><a href="<?=URL_BASE.URL_PRODUCTS.$mm['url_rewrite']?>"><?=$mm['name']?></a></li>
                                                 <?php } ?>
                                             </ul>
                                         </div>
@@ -115,9 +115,9 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
                             <ul class="uk-nav-sub" >
                                 <?php foreach($menu['data'] AS $k=>$m){ ?>
                                     <li class="uk-margin-left">
-                                        <a class="uk-text-primary" href="<?=URL_BASE.'products'.$m['url_rewrite']?>"><?=$m['name']?></a>
+                                        <a class="uk-text-primary" href="<?=URL_BASE.URL_PRODUCTS.$m['url_rewrite']?>"><?=$m['name']?></a>
                                         <?php foreach($menu['l2'][$m['id']] AS $kk=>$mm){ ?>
-                                            <a class="uk-margin-left" href="<?=URL_BASE.'products'.$mm['url_rewrite']?>"><?=$mm['name']?></a>
+                                            <a class="uk-margin-left" href="<?=URL_BASE.URL_PRODUCTS.$mm['url_rewrite']?>"><?=$mm['name']?></a>
                                         <?php } ?>
                                     </li>
                                 <?php } ?>
