@@ -12,7 +12,7 @@
 <script>
     $.getJSON("<?=URL_BASE?>ajax.php?f=getFeatured",function(featured){
         $.each(featured.data, function(k,v){ 
-            var item = '<a class="uk-thumbnail uk-overlay-hover" href="<?=URL_BASE?>products/view'+v.url_rewrite+'">'
+            var item = '<a class="uk-thumbnail uk-overlay-hover" href="<?=URL_BASE.URL_PRODUCT?>'+v.url_rewrite+'">'
             +'  <figure class="uk-overlay">'
             +'      <img src="<?=URL_BASE?>image.php/'+v.img+'/small/'+v.date_add+'" alt="'+v.alt+'">'
             +'      <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">'+v.price+'</div>'
