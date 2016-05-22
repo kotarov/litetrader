@@ -10,6 +10,8 @@ $sth = $dbh->query("SELECT
     ein,
     phone,
     email,
+    skype,
+    facebook,
     country,
     city,
     address

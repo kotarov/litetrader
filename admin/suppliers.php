@@ -107,6 +107,14 @@
                         <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="email"></div>
                     </div>
                     <div class="uk-form-row">
+                        <label class="uk-form-label">Skype</label>
+                        <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="skype"></div>
+                    </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">Facebook</label>
+                        <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="facebook"></div>
+                    </div> 
+                    <div class="uk-form-row">
                         <label class="uk-form-label">Country</label>
                         <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="country"></div>
                     </div>
@@ -165,6 +173,14 @@
                         <label class="uk-form-label">Email <span class="uk-text-danger">*</span></label>
                         <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="email"></div>
                     </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">Skype</label>
+                        <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="skype"></div>
+                    </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label">Facebook</label>
+                        <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="facebook"></div>
+                    </div> 
                     <div class="uk-form-row">
                         <label class="uk-form-label">Country</label>
                         <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="country"></div>

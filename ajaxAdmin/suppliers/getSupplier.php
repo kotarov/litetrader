@@ -9,6 +9,8 @@ $sth = $dbh->query("SELECT
     s.family,
     s.phone,
     s.email,
+    s.skype,
+    s.facebook,
     s.country,
     s.city,
     (SELECT GROUP_CONCAT(sc.id_company) FROM suppliers_companies sc WHERE sc.id_supplier = s.id) `id_company[]`,
