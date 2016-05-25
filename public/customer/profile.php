@@ -16,6 +16,8 @@
         <script src="<?=$_ASSETS['uikit.offcanvas.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.search.css']?>">
         <script src="<?=$_ASSETS['uikit.search.js']?>"></script>
+        <link  href="<?=$_ASSETS['uikit.notify.css']?>" rel="stylesheet" />
+        <script src="<?=$_ASSETS['uikit.notify.js']?>"></script>
         
         <link  href="<?=$_ASSETS['dataTables.uikit.css']?>" rel="stylesheet">
         <script src="<?=$_ASSETS['dataTables.js']?>"></script>
@@ -33,6 +35,7 @@
             <div class="uk-width-medium-1-4">
                 <div class="uk-text-center left-menu-hat">
                     <i class="uk-icon-user uk-border-circle uk-margin-bottom" style="font-size:6em;padding:0.1em 0.2em;background:#f5f5f5;color:#fff"></i>
+                    <div id="personal-email" class="uk-text-muted" style="padding-bottom:1em"></div>
                 </div>
                 <ul class="uk-tab uk-tab-left" data-uk-tab="{connect:'#tab-content'}" >
                     <li  class="uk-active"><a href="#active-orders">Active orders</a></li>
@@ -115,8 +118,15 @@
                             <dt>Phone</dt>
                             <dd id="personal-phone" class="uk-visible-hover-inline">-</dd>
                             
-                            <dt>Email</dt>
-                            <dd id="personal-email">-</dd>
+                            
+                            <dt>Skype</dt>
+                            <dd id="personal-skype" class="uk-visible-hover-inline">-</dd>
+                            
+                            <dt>Facebook</dt>
+                            <dd id="personal-facebook" class="uk-visible-hover-inline">-</dd>
+                            
+                            <dt>Tweeter</dt>
+                            <dd id="personal-twitter" class="uk-visible-hover-inline">-</dd>
                             
                             <dt>City</dt>
                             <dd id="personal-city" class="uk-visible-hover-inline">-</dd>
@@ -134,13 +144,16 @@
                             $.getJSON("<?=URL_BASE?>ajax.php?f=getLogged").done(function(d){ 
                                 if(d.id){
                                     var icon = ' <a class="uk-hidden uk-icon-pencil uk-float-right"></a>';
-                                    $("#personal-name").html(d.name + icon);
-                                    $("#personal-family").html(d.family + icon);
-                                    $("#personal-phone").html(d.phone + icon);
-                                    $("#personal-email").html(d.email);
-                                    $("#personal-city").html(d.city + icon)
-                                    $("#personal-address").html(d.address + icon);
-                                    $("#personal-password").html("*****" + icon);
+                                    $("#personal-name").html(d.name + "&nbsp;" +icon);
+                                    $("#personal-family").html(d.family + "&nbsp;" +icon);
+                                    $("#personal-phone").html(d.phone + "&nbsp;" + icon);
+                                    $("#personal-skype").html(d.skype + "&nbsp;" + icon);
+                                    $("#personal-facebook").html(d.facebook + "&nbsp;" + icon);
+                                    $("#personal-twitter").html(d.twitter + "&nbsp;" + icon);
+                                    $("#personal-email").html(d.email + "&nbsp;");
+                                    $("#personal-city").html(d.city + "&nbsp;" +icon)
+                                    $("#personal-address").html(d.address + "&nbsp;" +icon);
+                                    $("#personal-password").html("*****" + "&nbsp;" +icon);
                                 }else{
                                     window.location.href = "customer/";
                                 }     
@@ -203,6 +216,6 @@
             
         </div>
         <?php include '../snipps/foot.php'; ?>
-        <script src="<?=URL_BASE.$_ASSETS['application.js']?>"></script>
+        <script src="<?=$_ASSETS['application.js']?>"></script>
     </body>
 </html>

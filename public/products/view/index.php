@@ -31,7 +31,7 @@
         
         <style>
             .zoomGalleryActive { border: 1px solid red;}
-            .buy-product {display:none}
+            .buy-product,.cannot-buy-poduct {display:none}
         </style>
     </head>
     <body id="page-product"> 
@@ -41,28 +41,30 @@
         <ul class="uk-breadcrumb"></ul>
        
        
+        <h2 id="name" style="margin-top:0"></h2>
        <div class="uk-grid uk-margin-bottom" data-uk-grid-margin>
-           <div class="uk-width-medium-1-3">
-                <div id="wrap-main-image" class="uk-overlay uk-width-1-1">
+           <div class="uk-width-medium-1-2">
+                <div class="uk-overlay uk-width-1-1 uk-thumbnail">
                     <a data-uk-lightbox="{group:'main-image'}" href="#">
-                        <img id="main-image" class="uk-width-1-1 uk-margin-bottom" style="max-height:100%" src="">
+                        <img id="main-image" class="uk-width-1-1" style="max-height:100%" src="">
                     </a>
                 </div>
                 
                 <div id="product-images" class="uk-thumbnav uk-grid-width-1-5"></div>
            </div>
-           <div class="uk-width-medium-2-3 uk-grid ">
-               <div class="uk-width-3-4">
-                    <h2 id="name" style="margin-bottom:0"></h2>
+           <div class="uk-width-medium-1-2 uk-grid ">
+                
+                <div class="uk-width-1-1">
+                    <div>Price: <b class="uk-text-primary uk-text-large" id="price"></b></div>
                     <div id="reference" class="uk-text-muted"></div>
                     <p id="description" class="uk-panel uk-panel-box uk-panel-box-primary"></p>
-                    <div>Price: <b><big id="price"></big></b></div>
 
-                    <hr>
-                    <div> 
+                    
+                    <div class="uk-panel"> 
                         <button class="uk-button uk-button-primary buy-product uk-button-large">
                             <i class="uk-icon-shopping-bag"></i>&nbsp;&nbsp; Buy
                         </button> 
+                        <i class="cannot-buy-poduct uk-text-muted">Out of stock</i>
                     </div>
                     <script> 
                         $("body").on("click",".buy-product",function(e){ e.preventDefault();
@@ -76,14 +78,24 @@
                             });
                         }); 
                     </script>
-                
-                </div>
-                <div class="uk-width-1-4">
                     
+                    
+                    <h3 class="uk-text-primary">Details</h3>
+                    <hr>
+                    <div id="details" class="uk-width-medium-1-1"></div>
+
+                    <h3 class="uk-text-primary">Contacts</h3>
+                    <hr>
+                    <div id="contacts"></div>
+
                 </div>
+
+
+                
            </div>
            
-           <div id="details" class="uk-width-medium-1-1"></div>
+           
+           
         </div>
         
         <script>
@@ -95,9 +107,9 @@
             $.getJSON("<?=URL_BASE?>ajax.php?f=getProduct&id="+window['id_product']).done(function(ret){
                 $(".uk-breadcrumb").html('<li><a href="<?=URL_BASE?>products/"><i class="uk-icon-home"></i> Home</a></li>');
                 $.each(ret.parents, function(r,c){
-                    $(".uk-breadcrumb").append('<li><a href="<?=URL_BASE?>products'+c.url_rewrite+'">'+c.name+'</a></li>');
+                    $(".uk-breadcrumb").append('<li><a href="<?=URL_BASE.URL_PRODUCTS;?>'+c.url_rewrite+'">'+c.name+'</a></li>');
                 });
-                $(".uk-breadcrumb").append('<li class="uk-active"><a href="<?=URL_BASE?>products'+ret.data.url_rewrite+'">'+ret.data.category+'</a></li>');
+                $(".uk-breadcrumb").append('<li class="uk-active"><a href="<?=URL_BASE.URL_PRODUCTS;?>'+ret.data.url_rewrite+'">'+ret.data.category+'</a></li>');
                 
                 var imgSRC = "<?=URL_BASE?>image.php/"+ret.data.id_image+"/"+ret.data.date_add+"/";
                 $("#main-image").attr("src",imgSRC);
@@ -111,8 +123,14 @@
                     $("#product-images").append('<a href="#" data-image="'+url+'" data-uk-lightbox="{group:\'main-image\'}" class="uk-width-1-5"><img src="'+url+'"> </a>');
                 });
                 
-                if(ret.data.is_avaible == 1) $(".buy-product").show();
-                else $(".buy-product").hide();
+                if(ret.data.is_avaible == 1) {
+                    $(".buy-product").show();
+                    $(".cannot-buy-poduct").hide();
+                    
+                }else {
+                    $(".buy-product").hide();
+                    $(".cannot-buy-poduct").show();
+                }
                 
                 $("#main-image").elevateZoom({
                     tint:true, tintColour:'black', tintOpacity:0.5,
@@ -128,7 +146,7 @@
         
         <div class="uk-margin"> </div>
         
-        <script src="<?=URL_BASE.$_ASSETS['application.js']?>"></script>
+        <script src="<?=URL_BASE?>js/application.js"></script>
         <?php include '../../snipps/foot.php'; ?>
         
     </body>

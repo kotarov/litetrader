@@ -38,10 +38,11 @@
             <div class="uk-width-medium-1-4">
                 <div class="uk-text-center left-menu-hat">
                     <i class="uk-icon-user uk-border-circle uk-margin-bottom" style="font-size:6em;padding:0.1em 0.2em;background:#f5f5f5;color:#fff"></i>
+                    <div id="personal-email" class="uk-text-muted" style="padding-bottom:1em">-</div>
                 </div>
                 <ul class="uk-tab uk-tab-left" data-uk-tab="#tab-content">
                     <li class="uk-active"><a href="#profile">Profile</a></li>
-                    <li><a href="#activity">Activity</a></li>
+                    <li><a href="#messages">Messages</a></li>
                 </ul>
                 <div class="uk-hidden-small" style="border-right:1px solid #ddd">
                     <br><br><br><br><br><br><br><br><br>
@@ -64,9 +65,6 @@
                             <dt>Phone</dt>
                             <dd id="personal-phone" class="uk-visible-hover-inline">-</dd>
                             
-                            <dt>Email</dt>
-                            <dd id="personal-email">-</dd>
-                            
                             <dt>Address</dt>
                             <dd id="personal-address" class="uk-visible-hover-inline">-</dd>
                             
@@ -80,11 +78,11 @@
                             $.getJSON("ajax.php?f=getLogged").done(function(d){ 
                                 if(d.id){
                                     var icon = ' <a class="uk-hidden uk-icon-pencil uk-float-right"></a>';
-                                    $("#personal-name").html(d.name + icon);
-                                    $("#personal-family").html(d.family + icon);
-                                    $("#personal-phone").html(d.phone + icon);
-                                    $("#personal-email").html(d.email);
-                                    $("#personal-address").html(d.address + icon);
+                                    $("#personal-name").html(d.name + "&nbsp;" + icon);
+                                    $("#personal-family").html(d.family + "&nbsp;" + icon);
+                                    $("#personal-phone").html(d.phone + "&nbsp;" + icon);
+                                    $("#personal-email").html(d.email + "&nbsp;");
+                                    $("#personal-address").html(d.address + "&nbsp;" + icon);
                                     $("#personal-password").html("&bull;&bull;&bull;&bull;&bull;" + icon);
                                 }else{
                                     window.location.href = "login.php";
@@ -105,8 +103,8 @@
                             
                         </script>
                     </li>
-                    <li id="activity"> 
-                        <h2>Your Activity</h2> 
+                    <li id="mesages"> 
+                        <h2>Your Messages</h2> 
                         <table class="uk-table uk-table-hover uk-table-striped">
                             <thead><tr> <th>Date</th><th>Address</th><th>Products</th><th>Total</th> </tr></thead>
                             <tbody><tr> <td colspan="4" class="uk-text-center uk-text-muted">No activities</td> </tr></tbody>

@@ -28,7 +28,7 @@ if(!isset($ret['required'])){
     $exists = $sth->fetch(PDO::FETCH_COLUMN) ;
     if($exists){
         $_SESSION['customer'] = array();
-        $_SESSION['customer'] = $dbh->query("SELECT id, name, family, email, phone, country, city, address FROM customers WHERE id = $exists")
+        $_SESSION['customer'] = $dbh->query("SELECT id, name, family, email, phone, skype, facebook, twitter, country, city, address FROM customers WHERE id = $exists")
             ->fetch(PDO::FETCH_ASSOC);
         $dbh->query("UPDATE customers SET date_logged = ".time()." WHERE id = $exists");
         $ret['success'] = 'Wellcom';

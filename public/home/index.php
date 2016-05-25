@@ -28,24 +28,20 @@
             <?php include '../snipps/head.php'; ?>
             
             <!-- Jumbo -->
+            <?php $jumbo = parse_ini_file(INI_DIR."jumbo.ini",true);?>
             <div class="uk-grid uk-grid-collapse">
                 
                 <div class="uk-width-medium-3-4">
                     <div id="slideshow">
                         <div class="uk-slidenav-position">
                             <ul class="uk-slideset uk-grid uk-flex-center">
-                                <li>
-                                    <img src="../img/slide/photo4.jpg" width="100%" alt="" hidden>
-                                </li>
-                                <li>
-                                    <img src="../img/slide/photo3.jpg" width="100%" alt="" hidden>
-                                </li>
-                                <li>
-                                    <img src="../img/slide/photo2.jpg" width="100%" alt="" hidden>
-                                </li>
-                                <li>
-                                    <img src="../img/slide/photo1.jpg" width="100%" alt="" hidden>
-                                </li>
+                                <?php foreach($jumbo['img']['src'] AS $k => $src){ ?>
+                                    <li> 
+                                    <?php if($jumbo['img']['href'][$k]) { ?> <a href="<?=$jumbo['img']['href'][$k]?>">  <?php } ?>
+                                        <img src="<?=$src?>" width="100%" alt="<?=$jumbo['img']['alt'][$k]?>">
+                                    <?php if($jumbo['img']['href'][$k]) { ?>  </a> <?php } ?>
+                                    </li>
+                                <?php } ?>
                             </ul>
                             <a href="#" class="uk-slidenav uk-slidenav-previous" data-uk-slideset-item="previous"></a>
                             <a href="#" class="uk-slidenav uk-slidenav-next" data-uk-slideset-item="next"></a>

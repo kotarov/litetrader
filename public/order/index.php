@@ -167,7 +167,7 @@
     
     
         <div class="uk-margin-large-bottom"></div>
-        <script src="<?=URL_BASE.$_ASSETS['application.js']?>"></script>
+        <script src="<?=URL_BASE?>js/application.js"></script>
         <?php include '../snipps/foot.php'; ?>
     </body>
 </html>

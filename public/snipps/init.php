@@ -18,8 +18,8 @@ if (!function_exists('base_url')) { function base_url(){
     header("Expires:".date("D, M j G:i:s",(time()+$exp)) );
     header("pragma:cache");
     
-    $_ASSETS = parse_ini_file(__DIR__.'/../../assets.ini');
-    $_COMPANY = parse_ini_file(__DIR__.'/../../company.ini');
+    $_ASSETS = parse_ini_file(__DIR__.'/../../ini/assets.ini');
+    $_COMPANY = parse_ini_file(__DIR__.'/../../ini/company.ini');
     
     define('URL_BASE', base_url());
     define('URL_PRODUCTS', 'products/index.php');
@@ -27,5 +27,5 @@ if (!function_exists('base_url')) { function base_url(){
     
     define( 'DB_DIR', realpath(__DIR__.'/../../sqlite/').'/' );
     define('LIB_DIR', realpath(__DIR__.'/../../lib/'   ).'/' );
-    define('INI_DIR', realpath(__DIR__.'/../../'   ).'/' );
+    define('INI_DIR', realpath(__DIR__.'/../../ini/'    ).'/' );
 ?>

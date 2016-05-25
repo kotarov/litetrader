@@ -1,5 +1,4 @@
 <?php
-//session_start();
 if(!isset($_SESSION['employee']['id'])) return;
 
 $ret = array('success'=>1);

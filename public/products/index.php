@@ -96,7 +96,7 @@
             
         <br><br>
         <?php include '../snipps/foot.php'; ?>
-        <script src="<?=URL_BASE.$_ASSETS['application.js']?>"></script>
+        <script src="<?=URL_BASE?>js/application.js"></script>
     </body>
     
 </html>
