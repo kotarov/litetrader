@@ -1,6 +1,6 @@
 <?php
 $exp = 2592000;  //30days (60sec * 60min * 24hours * 30days)
-include 'snipps/ini.php';
+include 'snipps/init.php';
 
 if(isset($_SERVER['PATH_INFO'])){
     list($temp,$id,$size) = explode("/",$_SERVER['PATH_INFO']);
