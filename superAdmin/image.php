@@ -1,6 +1,6 @@
 <?php
 $exp = 2592000;  //30days (60sec * 60min * 24hours * 30days)
-include 'snipps/ini.php';
+include 'snipps/init.php';
 
 if(isset($_SERVER['PATH_INFO'])){
     list($temp,$id,$size) = explode("/",$_SERVER['PATH_INFO']);
@@ -14,7 +14,8 @@ if(isset($_SERVER['PATH_INFO'])){
         if(!file_exists($noimage)){
             include '../lib/ResampleImage.php';
             $s = parse_ini_file('../ini/image.ini', true);
-            file_put_contents($noimage, resampleimage(file_get_contents('img/no-image.png'), $s[$size]['width'], $s[$size]['height'], $s['bgcolor']) );
+            $ii=file_get_contents('img/no-image.png');
+            file_put_contents($noimage, resampleimage($ii, $s[$size]['width'], $s[$size]['height'], $s['bgcolor']));
         }
         $image = file_get_contents( $noimage );
     }

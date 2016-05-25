@@ -17,7 +17,8 @@ if(isset($_SERVER['PATH_INFO'])){
         if(!file_exists($noimage)){
             include '../lib/ResampleImage.php';
             $s = parse_ini_file('../image.ini', true);
-            file_put_contents($noimage, resampleimage(file_get_contents('img/no-image.png'), $s[$size]['width'], $s[$size]['height'], $s['bgcolor']) );
+            $ii = file_get_contents('img/no-image.png');
+            file_put_contents($noimage, resampleimage($ii, $s[$size]['width'], $s[$size]['height'], $s['bgcolor']) );
         }
         $image = file_get_contents( $noimage );
     }
