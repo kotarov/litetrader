@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Contacts</title>
         <link rel="shortcut icon" href="<?=URL_BASE?>img/favicon.png" type="image/x-icon">
         
         <script src="<?=$_ASSETS['jquery.js']?>"></script>
