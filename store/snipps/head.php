@@ -9,12 +9,12 @@
             'title'=>'Products',
             'url'=>'products.php',
             'data-active'=>'page-products',
-            'children'=>array(
+            /*'children'=>array(
                 'products'=>array('title'=>'Products', 'url'=>'products.php'),
                 'categories'=>array( 'title'=>'Categories', 'url'=>'categories.php'),
                 //'-1-'=>array(),
                 //'measure-units'=>array( 'title'=>'Measure Units', 'url'=>'productsunits.php')
-            )
+            )*/
         ),
         'customers'=>array(
             'title'=>'Customers',
