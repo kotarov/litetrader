@@ -1,7 +1,11 @@
 <?php
 
-$where = '';
-if(isset($_REQUEST['id'])) $where = " WHERE p.id = ".(int)$_REQUEST['id'];
+$dbh = new PDO('sqlite:'.DB_DIR.'suppliers');
+$sql = "SELECT GROUP_CONCAT(id_company) FROM suppliers_companies WHERE id_supplier = ".$_SESSION['supplier']['id'];
+$companies = $dbh->query($sql)->fetch(PDO::FETCH_COLUMN);
+
+$where = "WHERE sc.id IN ($companies)";
+if(isset($_REQUEST['id'])) $where .= " AND p.id = ".(int)$_REQUEST['id'];
 
 $dbh = new PDO('sqlite:'.DB_DIR.'products');
 $dbh->query("ATTACH DATABASE '".DB_DIR."suppliers' AS sup");
