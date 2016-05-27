@@ -1,5 +1,5 @@
 <?php
-header("Cache-Control: max-age=86400"); //1days (60sec * 60min * 24hours * 1days)
+header("Cache-Control: max-age=43200"); //1/2days (60sec * 60min * 12hours * 1days)
 header("Expires:".date("D, M j G:i:s",(time()+86400)) );
 header("pragma:cache");
 
@@ -28,7 +28,12 @@ $charts = array(
         'db'=>'suppliers',
         'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM suppliers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new registered suppliers'),
-    )
+    ),
+    'blogs'=>array(
+        'db'=>'blogs',
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date,'unixepoch')) mo FROM blogs WHERE date > ".strtotime("1/1/$year")." AND date < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date",
+        'sets'=>array( 'tooltipSuffix'=>'new articles'),
+    ),
 );
 
 

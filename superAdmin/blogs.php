@@ -33,6 +33,8 @@
         <link  href="<?=$_ASSETS['select2.css']?>" rel="stylesheet" />
         <script src="<?=$_ASSETS['select2.js']?>"></script>
         
+        <script src="<?=$_ASSETS['chart.sparkline.js']?>"></script>
+        
         <script src="<?=$_ASSETS['tinymce.js']?>"></script>
         <style>
             .select2-container--default .select2-selection--multiple{ border-color:#ddd;border-radius:0}
@@ -46,7 +48,7 @@
     <body id="page-blogs"> 
         <?php include 'snipps/head.php'; ?>
         
-        <h2 class="page-header">Blog items</h2>
+        <h2 class="page-header">Blog items <span class="uk-margin-left page-sparkline" data-table="blogs"></span></h2>
         <div class="uk-container">
         
         <table id="blogs" class="uk-table uk-table-hover uk-table-striped uk-table-condensed" cellspacing="0" width="100%"
