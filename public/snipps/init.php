@@ -13,7 +13,7 @@ if (!function_exists('base_url')) { function base_url(){
 } }
 
 
-    $exp = 0;//86400;  //1day (60sec * 60min * 24hours * 1days)
+    $exp = 43200;  //1/2days (60sec * 60min * 12hours * 0days)
     header("Cache-Control: max-age=$exp"); 
     header("Expires:".date("D, M j G:i:s",(time()+$exp)) );
     header("pragma:cache");
