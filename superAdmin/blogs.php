@@ -42,6 +42,7 @@
             article input, article select {background:transparent!important; border:1px dotted #ddd;}
             .editable:hover:before {content:"\f040";color:#05f;position:absolute;margin-left:-25px;font-family: FontAwesome;line-height: 1;font-size:20px;}
             .uk-form article, .uk-form .uk-article { padding:20px;background:#fff;border:1px solid #ddd }
+            .uk-article-lead{background:#f0f0f0;}
         </style> 
     </head>
     
