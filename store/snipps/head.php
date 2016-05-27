@@ -48,8 +48,17 @@
             'children'=>array(
                 'update'=>array('title'=>'Git Updater','url'=>'tools-update.php')    
             )
-        )
+        ),
         */
+        'blogs'=>array(
+            'title'=>"Blog",
+            'url'=>'blogs.php',
+            'data-active'=>'page-blogs',
+            'children'=>array(
+                'blogs'=>array('title'=>'Blog','url'=>'blogs.php'),
+                'categories'=>array('title'=>'Categories','url'=>'blogscategories.php')
+            )
+        ),
     );
 ?>
 <script>
