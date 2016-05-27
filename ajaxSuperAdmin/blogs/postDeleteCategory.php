@@ -7,11 +7,10 @@ $post = filter_var_array($_POST,array(
 
 if(!$post['id']) exit;
 
-$dbh = new PDO('sqlite:'.DB_DIR.'products');
+$dbh = new PDO('sqlite:'.DB_DIR.'blogs');
 $sth = $dbh->prepare("DELETE FROM categories WHERE id = :id");
 if( $sth->execute($post) ){
     include 'prepareCategories.php';
-    $_GET['getforselect'] = 1;
     include 'getCategories.php';
     $ret['success'] = 'category deleted';
 }else {

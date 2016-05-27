@@ -94,7 +94,9 @@
             			}
             		},
             		{ targets:5, title:"Name", render:function(d,t,r){return d+(r[12]?' <small class="uk-text-muted">/ '+r[12]+'</small>':'');}},
-            		{ targets:6, title:"Category"},
+            		{ targets:6, title:"Category",render:function(d,t,r){
+            		    return r[15] == 1 ? (d?d:"") : '<strike class="uk-text-muted">'+(d?d:"")+'</strike>';
+            		}},
             		{ targets:7, title:"Supplier"},
             		{ targets:8, title:"Price",width:"3em", "class":"dt-right"},
             		{ targets:9, title:"Qty", width:"3em","class":"uk-text-right uk-text-nowrap",render:function(d,t,r){return d+' '+r[14];}},

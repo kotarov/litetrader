@@ -2,13 +2,13 @@
 
 if(!isset($_GET['id'])) exit;
 
-$dbh = new PDO('sqlite:'.DB_DIR.'products');
+$dbh = new PDO('sqlite:'.DB_DIR.'blogs');
 $sth = $dbh->prepare("SELECT 
     id,
-    name,
+    title,
     id_parent,
-    description,
-    pos,
+    subtitle,
+    position,
     tags AS `tags[]`,
     children
 FROM categories WHERE id = ".(int)$_GET['id']);

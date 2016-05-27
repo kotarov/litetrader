@@ -40,6 +40,15 @@
                 ///'statuses'=>array('title'=>'Purchase Statuses','url'=>'suppliersorderstatuses.php')   
             )
         ),
+        'blogs'=>array(
+            'title'=>"Blog",
+            'url'=>'blogs.php',
+            'data-active'=>'page-blogs',
+            'children'=>array(
+                'blogs'=>array('title'=>'Blog','url'=>'blogs.php'),
+                'categories'=>array('title'=>'Categories','url'=>'blogscategories.php')
+            )
+        ),
         'tools'=>array(
             'title'=>'<i class="uk-icon-wrench"></i> Tools',
             'data-active'=>'page-tools',

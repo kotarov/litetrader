@@ -21,7 +21,8 @@ $sth = $dbh->prepare("SELECT
     i.date_add,
     p.reference,
     (SELECT COUNT(id) FROM images WHERE id_product = p.id) image_count,
-    u.abbreviation unit
+    u.abbreviation unit,
+    c.is_visible cat_is_visible
 FROM products p
 LEFT JOIN categories c ON (c.id = p.id_category) 
 LEFT JOIN images i ON (i.id_product = p.id AND i.is_cover = 1) 
