@@ -1,19 +1,10 @@
 <?php
-
-if (!function_exists('base_url')) { function base_url(){   
-    $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']!='off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO']=='https')) ? 'https://' : 'http://';
-    
-    $tmpURL = str_replace(chr(92),'/',realpath(__DIR__.'/../'));
-    $tmpURL = trim(str_replace($_SERVER['DOCUMENT_ROOT'],'',$tmpURL),'/');
-
-    if ($tmpURL !== $_SERVER['HTTP_HOST']) $base_url .= $_SERVER['HTTP_HOST'].'/'.$tmpURL.'/';
-    else $base_url .= $tmpURL.'/';
-    
-    return $base_url; 
-} }
+    define( 'DB_DIR', realpath(__DIR__.'/../../sqlite/').'/' );
+    define('LIB_DIR', realpath(__DIR__.'/../../lib/'   ).'/' );
+    define('INI_DIR', realpath(__DIR__.'/../../ini/'    ).'/' );
 
 
-    $exp = 43200;  //1/2days (60sec * 60min * 12hours * 0days)
+    if(!isset($exp)) $exp = 3600;  //1hour (60sec * 60min * 1hours * 0days)
     header("Cache-Control: max-age=$exp"); 
     header("Expires:".date("D, M j G:i:s",(time()+$exp)) );
     header("pragma:cache");
@@ -22,11 +13,11 @@ if (!function_exists('base_url')) { function base_url(){
     $_COMPANY = parse_ini_file(__DIR__.'/../../ini/company.ini');
     
     
-    define('URL_BASE', base_url());
+    include(LIB_DIR."URLBase.php");
+ 
+    define('URL_BASE', base_url( realpath(__DIR__.'/../') ));
     define('URL_PRODUCTS', 'products/index.php');
     define('URL_PRODUCT', 'products/view/index.php');
     
-    define( 'DB_DIR', realpath(__DIR__.'/../../sqlite/').'/' );
-    define('LIB_DIR', realpath(__DIR__.'/../../lib/'   ).'/' );
-    define('INI_DIR', realpath(__DIR__.'/../../ini/'    ).'/' );
+    dir(URL_BASE);
 ?>

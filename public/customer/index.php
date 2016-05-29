@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.css']?>" />
         <script src="<?=$_ASSETS['uikit.js']?>"></script>
         
+        <link href="<?=URL_BASE?>css/theme.css" rel="stylesheet">
+        
         <style> .uk-tab > li.uk-active > a {background:#f5f5f5} 
             .uk-panel-box { border-color: #ddd; border-style: solid; border-width: 0 1px 1px;}
         </style>

@@ -9,9 +9,8 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
             <div class="uk-panel uk-margin-top">
                 <div class="uk-float-left"><h1><?=$_COMPANY['name']?></h1></div>
                 <div class="uk-navbar-content uk-hidden-small">
-                    <form class="uk-search" data-uk-search="{flipDropdown:true, source:'_searchautocomplete.json'}">
+                    <form class="uk-search no-ajax" action="<?=URL_BASE?>products/search/" data-uk-search="{source:'<?=URL_BASE?>ajax.php?f=products/search'}">
                         <input class="uk-search-field" type="search" placeholder="search..." autocomplete="off">
-                        <div class="uk-dropdown uk-dropdown-flip uk-dropdown-search" aria-expanded="false"></div>
                     </form>
                 </div>
 
@@ -22,23 +21,23 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                     <span id="shopping-cart" href="" class="uk-grid" style="min-width:13em" hidden>
                         <h1 class="uk-width-2-6">
                             <a href="#modal-cart" data-uk-modal><i class="uk-icon-shopping-bag uk-text-primary" style="position:relative">
-                                <span id="shcart-badge" style="position:absolute;margin-top:-1em;margin-left:2em;display:none" class="uk-badge uk-badge-notification uk-badge-danger">0</span>
+                                <span style="position:absolute;margin-top:-1em;margin-left:2em;display:none" class="shopping-cart-badge uk-badge uk-badge-notification uk-badge-danger">0</span>
                             </i></a>
                         </h1>
                         <div class="uk-width-4-6 uk-text-right">
                             <div class="uk-text-muted">Shopping cart</div>
-                            <big id="shcart-price" class="uk-text-primary uk-text-bold" style="margin-top:0;display:none">0.00</big>
+                            <big class="uk-text-primary uk-text-bold shopping-cart-price" style="margin-top:0;display:none">0.00</big>
                         </div>
                     </span>
                 </div>
                 <script>
                     $(document).on("shopping-cart-changed", function(e, cart){
                         if(cart.nb > 0){
-                            $("#shcart-badge").html(cart.nb).show();
-                            $("#shcart-price").html(cart.total.toFixed(2)).show();
+                            $(".shopping-cart-badge").html(cart.nb).show();
+                            $(".shopping-cart-price").html(cart.total.toFixed(2)).show();
                         }else{
-                            $("#shcart-badge").html("").hide();
-                            $("#shcart-price").html("").hide();
+                            $(".shopping-cart-badge").html("").hide();
+                            $(".shopping-cart-price").html("").hide();
                         }
                     });
                 </script>
@@ -90,8 +89,8 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                     <?php } ?>
                     
                     <?php if($me['public']['order']) { ?>
-                    <li data-active="page-order">
-                        <a href="<?=URL_BASE?>order/"> ORDER</a>
+                    <li data-active="page-order" class="checkout" hidden>
+                        <a href="<?=URL_BASE?>order/"> ORDER <b class="shopping-cart-badge uk-badge uk-badge-notification uk-badge-danger"></b></a>
                     </li>
                     <?php } ?>
                     
@@ -105,8 +104,8 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                 </div>
                 <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
                 <div class="uk-navbar-brand uk-navbar-center uk-visible-small">
-                    <form class="uk-search">
-                        <input class="uk-search-field" type="search" placeholder="search...">
+                    <form class="uk-search uk-text-left no-ajax" action="<?=URL_BASE?>products/search/" data-uk-search="{source:'<?=URL_BASE?>ajax.php?f=products/search'}">
+                        <input class="uk-search-field" type="search" placeholder="search..." autocomplete="off">
                     </form>
                 </div>
             </nav>
@@ -114,11 +113,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
             <div id="offcanvas" class="uk-offcanvas">
                 <div class="uk-offcanvas-bar uk-offcanvas-bar-show">
                     <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-                        <li>
-                            <form class="uk-search">
-                                <input class="uk-search-field" type="search" placeholder="Search...">
-                            </form>
-                        </li>
+                        <li class="uk-nav-divider"></li>
 
                         <?php if($me['public']['home']) { ?>
                         <li data-active="page-home">
@@ -155,8 +150,8 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                         <?php } ?>
                         
                         <?php if($me['public']['order']) { ?>
-                        <li data-active="page-order">
-                            <a href="<?=URL_BASE?>order/">Order</a>
+                        <li data-active="page-order" class="checkout">
+                            <a href="<?=URL_BASE?>order/">Order <b class="shopping-cart-badge uk-badge uk-badge-notification uk-badge-danger"></b></a>
                         </li>
                         <?php } ?>
                         

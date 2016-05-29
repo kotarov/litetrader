@@ -1,6 +1,6 @@
 // FORM SUBMIT
 
-$("form").on("submit",function(e){ 
+$("form").not(".no-ajax").on("submit",function(e){ 
     e.preventDefault();
     var $form = $(this);
     $(".uk-form-danger", $form).removeClass('uk-form-danger');

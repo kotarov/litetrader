@@ -14,8 +14,13 @@
         <link  href="<?=$_ASSETS['uikit.css']?>" rel="stylesheet"/>
         <script src="<?=$_ASSETS['uikit.js']?>"></script>
         <script src="<?=$_ASSETS['uikit.offcanvas.js']?>"></script>
+        <link rel="stylesheet" href="<?=$_ASSETS['uikit.autocomplete.css']?>">
+        <script src="<?=$_ASSETS['uikit.autocomplete.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.search.css']?>">
         <script src="<?=$_ASSETS['uikit.search.js']?>"></script>
+        
+        <link href="<?=URL_BASE?>css/theme.css" rel="stylesheet">
+        
         <link  href="<?=$_ASSETS['uikit.notify.css']?>" rel="stylesheet"/>
         <script src="<?=$_ASSETS['uikit.notify.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.dotnav.css']?>" />

@@ -14,14 +14,21 @@
         <link  href="<?=$_ASSETS['uikit.css']?>" rel="stylesheet"/>
         <script src="<?=$_ASSETS['uikit.js']?>"></script>
         <script src="<?=$_ASSETS['uikit.offcanvas.js']?>"></script>
+
+        <link rel="stylesheet" href="<?=$_ASSETS['uikit.autocomplete.css']?>">
+        <script src="<?=$_ASSETS['uikit.autocomplete.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.search.css']?>">
         <script src="<?=$_ASSETS['uikit.search.js']?>"></script>
+
+        
         
         <link  href="<?=$_ASSETS['dataTables.uikit.css']?>" rel="stylesheet">
         <script src="<?=$_ASSETS['dataTables.js']?>"></script>
         <script src="<?=$_ASSETS['dataTables.uikit.js']?>"></script>
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.dotnav.css']?>" />
         <script src="<?=$_ASSETS['uikit.slideset.js']?>"></script>
+        
+        <link href="<?=URL_BASE?>css/theme.css" rel="stylesheet">
     </head>
     
     <body id="page-products"> 
