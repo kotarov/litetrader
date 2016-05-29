@@ -19,5 +19,4 @@
     define('URL_PRODUCTS', 'products/index.php');
     define('URL_PRODUCT', 'products/view/index.php');
     
-    dir(URL_BASE);
 ?>
