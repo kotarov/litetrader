@@ -1,7 +1,8 @@
 <?php
     $menu = array(
         'home'=>array(
-            'title'=>'<i class="uk-icon-home"></i> Home',
+            'title'=>'Home',
+            'icon'=>'uk-icon-home',
             'url'=>'index.php',
             'data-active'=>'page-home'
         ),
@@ -50,7 +51,8 @@
             )
         ),
         'tools'=>array(
-            'title'=>'<i class="uk-icon-wrench"></i> Tools',
+            'title'=>'Tools',
+            'icon'=>'uk-icon-wrench',
             'data-active'=>'page-tools',
             'children'=>array(
                 'update'=>array('title'=>'Git Updater','url'=>'tools-update.php')    
@@ -77,15 +79,15 @@
                     <?php foreach($menu AS $k=>$v){
                         if(isset($v['children'])){
                             echo '<li data-uk-dropdown data-active="'.$v['data-active'].'">';
-                            echo '  <a href="'.(isset($v['url']) ? $v['url'] : '#').'">'.$v['title'].' <i class="uk-icon-caret-down"></i></a>';
+                            echo '  <a href="'.(isset($v['url']) ? $v['url'] : '#').'">'.(isset($v['icon'])?'<i class="'.$v['icon'].'"></i> ':'').'<span data-lang>'.$v['title'].'</span> <i class="uk-icon-caret-down"></i></a>';
                             echo '<div class="uk-dropdown"> <ul class="uk-nav uk-nav-navbar">';
                             foreach($v['children'] AS $kk=>$ch ){
                                 if(substr($kk,0,1) == '-') echo '<li class="uk-nav-divider"></li>';
-                                else echo '<li><a href="'.$ch['url'].'">'.$ch['title'].'</a></li>';
+                                else echo '<li><a href="'.$ch['url'].'"><span data-lang>'.$ch['title'].'</span></a></li>';
                             }
                             echo '</ul></div></li>';
                         }else{
-                            echo '<li data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.$v['title'].'</a></li>'; 
+                            echo '<li data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.(isset($v['icon'])?'<i class="'.$v['icon'].'"></i> ':'').'<span data-lang>'.$v['title'].'</span></a></li>'; 
                         }
                         
                     }?>

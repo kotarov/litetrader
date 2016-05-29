@@ -31,7 +31,7 @@ $charts = array(
     ),
     'blogs'=>array(
         'db'=>'blogs',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date,'unixepoch')) mo FROM blogs WHERE date > ".strtotime("1/1/$year")." AND date < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',(date(date,'unixepoch'))) mo FROM blogs WHERE date >= ".strtotime("1/1/$year")." AND date <= ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date",
         'sets'=>array( 'tooltipSuffix'=>'new articles'),
     ),
 );
@@ -51,7 +51,7 @@ if(isset($charts[$get['m']])){
     $ret['data'] = array(null,null,null,null,null,null,null,null,null,null,null,null);
     $c_m = date('m');
     for($i=0;$i<13;$i++){
-        if($i < $c_m) $ret['data'][$i] = 0;
+        if(($i) < $c_m) $ret['data'][$i] = 0;
         else $ret['data'][$i] = null;
     }
     

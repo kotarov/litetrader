@@ -1,4 +1,6 @@
 <?php
+include_once(LIB_DIR."URLRewrite.php");
+
 $ret = array();
 $post = filter_var_array($_POST,array(
     'id'=>FILTER_VALIDATE_INT,
@@ -27,11 +29,13 @@ if(!$post['tags']) $ret['required'][] = 'tags[]';
 if(!isset($ret['required'])){
     if($post['id']){
         $post['tags'] = implode(',',$post['tags']);
+        if($post['date']) $post['date'] = strtotime($post['date']);
+        $post['url_rewrite'] = url_rewrite($post['id'].'-'.$post['title']);
+        
         $sets = array();
         foreach(array_keys($post) AS $k=>$v){
             $sets[] = $v.'=:'.$v;
         }
-        if($post['date']) $post['date'] = strtotime($post['date']);
         
         $dbh = new PDO('sqlite:'.DB_DIR.'blogs');
         $sth = $dbh->prepare("UPDATE blogs SET ".implode(",", $sets)." WHERE id = :id");
@@ -52,9 +56,14 @@ if(!isset($ret['required'])){
         $sth = $dbh->prepare("INSERT INTO blogs (".implode(',', $sets).") VALUES (:".implode(", :", $sets).")");
         $sth->execute($post);
         $_REQUEST['id'] = $dbh->lastInsertId();
+        
+        $url_rewrite = url_rewrite($_REQUEST['id'].'-'.$post['title']);
+        $dbh->query("UPDATE blogs SET url_rewrite = '".$url_rewrite."' WHERE id = ".$_REQUEST['id']);
+        
         include 'getBlogs.php';
         $ret['success'] = 'Blog with id='.$_REQUEST['id'].' added.';
     }
 }
 
 return json_encode($ret);
+

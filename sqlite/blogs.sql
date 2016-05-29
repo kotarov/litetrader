@@ -12,7 +12,8 @@ CREATE TABLE `blogs` (
     content text,
     image blob,
     is_active integer,
-    is_new integer
+    is_new integer,
+    url_rewrite text,
 );
 
 DROP TABLE IF EXISTS categories;

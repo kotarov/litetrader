@@ -42,7 +42,6 @@
             article input, article select {background:transparent!important; border:1px dotted #ddd;}
             .editable:hover:before {content:"\f040";color:#05f;position:absolute;margin-left:-25px;font-family: FontAwesome;line-height: 1;font-size:20px;}
             .uk-form article, .uk-form .uk-article { padding:20px;background:#fff;border:1px solid #ddd }
-            .uk-article-lead{background:#f0f0f0;}
         </style> 
     </head>
     
@@ -68,19 +67,20 @@
             		{ data:"is_active", title:"Vis", width:"1em", class:"uk-text-center", render:function(d,t,r){
             		    return '<a href="ajax.php?f=blogs/postToggleBlog" class="uk-icon-eye'+(d?'':'-slash uk-text-muted')+'" data-toggle="is_active" data-trigger="blog-changed" data-post=\'{"id":"'+r.id+'"}\'></a>';
             		}},
-            		{ data:"category", title:"Category",render:function(d,t,r){
-            		    if(d === null) d = "";
-            		    return r.cat_is_visible == 1 ? d : '<strike class="uk-text-muted">'+d+'</strike>';
-            		}},
             		{ data:"id", title:"ID", width:"1em", class:"id"},
-            		{ data:"image", title:"Img", width:"1em"},
-            		{ data:"title", title:"Title", class:"uk-nowrap", render:function(d,t,r){return d.replace(/^(.{45}[^\s]*).*/, "$1...")} },
-            		{ data:"subtitle", title:"Subtitle",render:function(d,t,r){return d.replace(/^(.{45}[^\s]*).*/, "$1...")  }},
-            		{ data:"author", title:"Author"},
             		{ data:"date", title:"Date", "class":"uk-text-center uk-text-middle", render:function(d,t,r){
             		    var date = d?(new Date(d * 1000).toLocaleDateString()):'-';
             		    return date!='-'?date:'-';
             		}},
+            		{ data:"image", title:"Img", width:"1em"},
+            		{ data:"title", title:"Title", class:"uk-nowrap", render:function(d,t,r){return d.replace(/^(.{45}[^\s]*).*/, "$1...")} },
+            		{ data:"category", title:"Category",render:function(d,t,r){
+            		    if(d === null) d = "";
+            		    return r.cat_is_visible == 1 ? d : '<strike class="uk-text-muted">'+d+'</strike>';
+            		}},
+            		{ data:"subtitle", title:"Subtitle",render:function(d,t,r){return d.replace(/^(.{45}[^\s]*).*/, "$1...")  }},
+            		{ data:"author", title:"Author"},
+            		
             		{ data:"actions", title:"", width:"1em", orderable:false, searchable:false, "class":"uk-text-center uk-text-middle uk-text-nowrap actions",
             			render: function(d,t,r){return ''
             			//+'<a href="#modal-edit-blog" class="uk-icon-edit" data-uk-modal data-get="id='+r.id+'" data-populate=\'{"id":"'+r.id+'"}\' title="Edit"></a>'
@@ -113,19 +113,19 @@
                                 data-menubar="false"
                             >Article title</h1>
                             
-                            <div class="uk-article-meta uk-panel-box1">
-                                Written by <b name="author"></b> on <input type="date" name="date">. Posted in <select data-get="ajax.php?f=blogs/getCategories&forselect" name="id_category"></select>
-                            </div>
-                            
-                            <div class="uk-article-divider"></div>
-                            
                             <div class="uk-article-lead uk-width-1-1 editable" name="subtitle" 
                                 data-tinymce
                                 data-inline="true"
                                 data-toolbar="undo,redo"
                                 data-menubar="false"
                             >Article Lead.</div>
-    
+                            
+                            <div class="uk-article-divider"></div>
+                            
+                            <div class="uk-article-meta uk-panel-box1">
+                                Written by <b name="author"></b> on <input type="date" name="date">. Posted in <select data-get="ajax.php?f=blogs/getCategories&forselect" name="id_category"></select>
+                            </div>
+                            
                             <div class="uk-article-divider"></div>                        
                             
                             <div name="content" class="uk-width-1-1 edit uk-margin-top uk-margin-bottom editable" 

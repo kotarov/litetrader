@@ -1,4 +1,6 @@
 <?php
+include_once(LIB_DIR."URLRewrite.php");
+
 function mapTree($rows, $id_parent = 0, $depth=0){
     $tree = array();
     $last = 0;
@@ -68,16 +70,16 @@ foreach($all AS $id){
         $name = $dbh->query("SELECT title FROM categories WHERE id = ".$id_parent)->fetch(PDO::FETCH_COLUMN);
         
         $parents[]= $id_parent;
-        $names[] = str_replace(' ','-',$name);
+        $names[] = url_rewrite($name);
         
         $id_search = $id_parent; 
     }while( $id_parent );
 
 
     $current_name = $dbh->query("SELECT title FROM categories WHERE id = ".$id)->fetch(PDO::FETCH_COLUMN);
-    $url_rewrite = implode("/",array_reverse($names)).'/'.$id.'-'.$current_name.'/';
+    $url_rewrite = implode("/",array_reverse($names)).'/'.$id.'-'.$current_name;
     if(!$parents) $parents = array('/');
-    $dbh->query("UPDATE categories SET parents = '".implode(',', array_reverse($parents))."', url_rewrite = '".str_replace(array(' '),'-',$url_rewrite)."' WHERE id = $id");
+    $dbh->query("UPDATE categories SET parents = '".implode(',', array_reverse($parents))."', url_rewrite = '".url_rewrite($url_rewrite)."/' WHERE id = $id");
 }
 
 

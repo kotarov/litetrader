@@ -21,6 +21,7 @@ if (!function_exists('base_url')) { function base_url(){
     $_ASSETS = parse_ini_file(__DIR__.'/../../ini/assets.ini');
     $_COMPANY = parse_ini_file(__DIR__.'/../../ini/company.ini');
     
+    
     define('URL_BASE', base_url());
     define('URL_PRODUCTS', 'products/index.php');
     define('URL_PRODUCT', 'products/view/index.php');

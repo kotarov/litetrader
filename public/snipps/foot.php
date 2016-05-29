@@ -45,3 +45,5 @@
         
         <?php include __DIR__.'/../cart/modal.php';?>
         <?php include __DIR__.'/../cart/changing_script.php';?>
+
+        <?php include __DIR__.'/ganalytics.php';?>

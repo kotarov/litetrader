@@ -1,8 +1,8 @@
 <?php 
 
 $NO_ENCODE = true;
-$menu = include __DIR__.'/../../ajax/getMenu.php';
-
+$me = parse_ini_file(INI_DIR.'menus.ini', true);
+if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
 ?>
 
         <div class="uk-container uk-container-center uk-margin-large-bottom">
@@ -51,11 +51,13 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
             <!-- menu -->
             <nav class="uk-navbar uk-margin-bottom">
                 <ul class="uk-navbar-nav uk-hidden-small">
+                    <?php if($me['public']['home']) { ?>
                     <li data-active="page-home">
                         <a href="<?=URL_BASE?>home/"><i class="uk-icon-home"></i> Home</a>
                     </li>
+                    <?php } ?>
 
-    
+                    <?php if($me['public']['products']) { ?>
                     <li data-active="page-products" data-uk-dropdown>
                             <a href="<?=URL_BASE?>products/" class="uk-button-dropdown" aria-haspopup="true" data-uk-dropdown="" aria-expanded="falae" >Products</a>
                             <div class="uk-dropdown uk-dropdown-width-3 uk-dropdown-bottom" style="top: 30px; left: 0px;">
@@ -73,13 +75,25 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
                                 </div>
                             </div>
                     </li>
+                    <?php } ?>
+                    
+                    <?php if($me['public']['articles']) { ?>
+                    <li data-active="page-articles">
+                        <a href="<?=URL_BASE?>articles/">Articles</a>
+                    </li>
+                    <?php } ?>
+                    
+                    <?php if($me['public']['contacts']) { ?>
                     <li data-active="page-contacts">
                         <a href="<?=URL_BASE?>contacts/">Contacts</a>
                     </li>
+                    <?php } ?>
                     
+                    <?php if($me['public']['order']) { ?>
                     <li data-active="page-order">
                         <a href="<?=URL_BASE?>order/"> ORDER</a>
                     </li>
+                    <?php } ?>
                     
                 </ul>
                 
@@ -106,10 +120,13 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
                             </form>
                         </li>
 
+                        <?php if($me['public']['home']) { ?>
                         <li data-active="page-home">
                             <a href="<?=URL_BASE?>home/">Home</a>
                         </li>
+                        <?php } ?>
 
+                        <?php if($me['public']['products']) { ?>
                         <li data-active="page-category" class="uk-parent">
                             <a href="#">Products</a>
                             <ul class="uk-nav-sub" >
@@ -123,14 +140,26 @@ $menu = include __DIR__.'/../../ajax/getMenu.php';
                                 <?php } ?>
                             </ul>
                         </li>
-
+                        <?php } ?>
+                        
+                        <?php if($me['public']['articles']) { ?>
+                        <li data-active="page-articles">
+                            <a href="<?=URL_BASE?>articles/">Articles</a>
+                        </li>
+                        <?php } ?>
+                        
+                        <?php if($me['public']['contacts']) { ?>
                         <li data-active="page-contacts">
                             <a href="<?=URL_BASE?>contacts/">Contacts</a>
                         </li>
-
+                        <?php } ?>
+                        
+                        <?php if($me['public']['order']) { ?>
                         <li data-active="page-order">
                             <a href="<?=URL_BASE?>order/">Order</a>
                         </li>
+                        <?php } ?>
+                        
                         <li class="uk-nav-divider"></li>
                         <li>
                             <ul class="uk-nav customer-nav-menu">
