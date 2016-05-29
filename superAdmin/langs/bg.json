@@ -13,7 +13,29 @@
     "Edit customer":"Редакция на клиент",
     "Cart of customer":"Количка на клиент",
     "Delete customer":"Изтриване на клиент",
+    "Blog articles":"Блог статии",
+    "Edit article":"Редакция на статия",
+    "New article":"Нова статия",
     
+    "Written by":"Написана от",
+    "on":"на",
+    "Posted in":"Пусната в",
+    "SEO Tags":"СЕО Тагове",
+    "Separate tags with":"Отделете таговете със",
+    "comma":"запетая",
+    "space":"интервл",
+    "or":"или",
+    "Article title":"Заглавието на статията",
+    "Article Lead.":"Описание",
+    "A long, long article content goes here.":"Съдържанието на статията.",
+    
+    "Vis":"Покажи",
+    "Date":"Дата",
+    "Image":"Картинка",
+    "Title":"Заглавие",
+    "Category":"Категория",
+    "Subtitle":"Подзаглавие",
+    "Author":"Автор",
     "Name":"Име",
     "Family":"Фамилия",
     "Phone":"Телефон",
@@ -40,6 +62,8 @@
     "Cancel":"Изход",
     "New":"Нов",
     "Delete":"Изтрий",
+    
+    
     
     "January":"Януари",
     "February":"Февруари",

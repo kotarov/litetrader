@@ -4,9 +4,9 @@ include_once(LIB_DIR."URLRewrite.php");
 $ret = array();
 $post = filter_var_array($_POST,array(
     'id'=>FILTER_VALIDATE_INT,
-    'mce_0'=>FILTER_SANITIZE_STRING,
-    'mce_2'=>FILTER_SANITIZE_STRING,
-    'mce_3'=>FILTER_DEFAULT,
+    'edit-title'=>FILTER_SANITIZE_STRING,
+    'edit-subtitle'=>FILTER_SANITIZE_STRING,
+    'edit-content'=>FILTER_DEFAULT,
     'date'=>FILTER_SANITIZE_STRING,
     'id_category'=>FILTER_VALIDATE_INT,
     'tags' => array(
@@ -15,19 +15,18 @@ $post = filter_var_array($_POST,array(
     )
 ));
 
-//if(!$post['id']) exit;
+if(!$post['id']) exit;
 
 
-$post['title'] = $post['mce_0'];
-$post['subtitle'] = $post['mce_2'];
-$post['content'] = $post['mce_3'];
-unset($post['mce_0']);unset($post['mce_2']);unset($post['mce_3']);
+$post['title'] = $post['edit-title'];
+$post['subtitle'] = $post['edit-subtitle'];
+$post['content'] = $post['edit-content'];
+unset($post['edit-title']);unset($post['edit-subtitle']);unset($post['edit-content']);
 
 if(!$post['title']) $ret['required'][] = 'title';
 if(!$post['tags']) $ret['required'][] = 'tags[]';
 
 if(!isset($ret['required'])){
-    if($post['id']){
         $post['tags'] = implode(',',$post['tags']);
         if($post['date']) $post['date'] = strtotime($post['date']);
         $post['url_rewrite'] = url_rewrite($post['id'].'-'.$post['title']);
@@ -44,25 +43,6 @@ if(!isset($ret['required'])){
         include 'getBlogs.php';
         $ret['id'] = $post['id'];
         $ret['success'] = 'Blog id='.$_REQUEST['id'].' changed.';
-    }else{
-        unset($post['id']);
-        $post['tags'] = implode(',',$post['tags']);
-        $post['author'] = $_SESSION['employee']['name'].' '.$_SESSION['employee']['family'];
-        $post['date_add'] = time();
-        if($post['date']) $post['date'] = strtotime($post['date']);
-        
-        $sets = array_keys($post);
-        $dbh = new PDO('sqlite:'.DB_DIR.'blogs');
-        $sth = $dbh->prepare("INSERT INTO blogs (".implode(',', $sets).") VALUES (:".implode(", :", $sets).")");
-        $sth->execute($post);
-        $_REQUEST['id'] = $dbh->lastInsertId();
-        
-        $url_rewrite = url_rewrite($_REQUEST['id'].'-'.$post['title']);
-        $dbh->query("UPDATE blogs SET url_rewrite = '".$url_rewrite."' WHERE id = ".$_REQUEST['id']);
-        
-        include 'getBlogs.php';
-        $ret['success'] = 'Blog with id='.$_REQUEST['id'].' added.';
-    }
 }
 
 return json_encode($ret);
