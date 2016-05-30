@@ -21,7 +21,7 @@ $src = realpath(__DIR__.'/../ini/schema/');
 $dest = realpath(__DIR__.'/../ini/');
 
 foreach (glob("$src/*.ini") as $file) {
-    $filename = basename($filename);
+    $filename = basename($file);
     echo 'cp '.$file.' '.$dest.'/'.$filename."\n";
     shell_exec('cp '.$file.' '.$dest.'/'.$filename);
 }
