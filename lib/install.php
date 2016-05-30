@@ -1,5 +1,5 @@
 <?php 
-echo "\n *** INSTALLATION BRGIN *** \n\n";
+echo "\n *** INSTALLATION START *** \n\n";
 
 /** DB */ 
 
