@@ -1,4 +1,4 @@
-<?php include '../snipps/init.php'; ?>
+<?php include '../../snipps/init.php'; ?>
 <?php
     $dbh = new PDO('sqlite:'.DB_DIR.'blogs');
     $p = isset($_GET['p']) ? (int)$_GET['p'] : 0 ;
@@ -21,6 +21,8 @@
     WHERE c.is_visible = 1 AND b.is_active = 1 
     LIMIT $p,$l
     ")->fetchAll(PDO::FETCH_ASSOC);
+    
+    $article = $articles[0];
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,20 +46,32 @@
         <link href="<?=URL_BASE?>css/theme.css" rel="stylesheet">
     </head>
     <body id="page-articles"> 
-    <?php include '../snipps/head.php'; ?>
+    <?php include '../../snipps/head.php'; ?>
     <br>
     
     <div class="uk-grid">
         <div class="uk-width-medium-3-4">
-        <?php foreach($articles AS $article){ ?>
-           <article class="uk-article">
-                <h1 name="title" class="uk-width-1-1 uk-article-title editable">
-                    <?=$article['title']?>
+        <?php if(!$article) { ?>
+            <article class="uk-article">
+                <h1 class="uk-width-1-1 uk-article-title editable">
+                    Article not found
                 </h1>
-                
+                <div class="uk-article-lead uk-width-1-1 editable" name="subtitle">
+                    This article does not exist or is no longer available.
+                </div>
+                <br>
+            </article>
+        <?php }else { ?>
+           <article class="uk-article">
                 <div class="uk-article-meta uk-panel-box1">
                     Written by <b><?=$article['author']?></b> on <b><?=$article['date']?></b> Posted in <b><?=$article['category']?></b></select>
                 </div>
+        
+                <h1 class="uk-width-1-1 uk-article-title editable">
+                    <?=$article['title']?>
+                </h1>
+                
+                
                 
                 <div class="uk-article-divider"></div>
                 
@@ -65,10 +79,18 @@
                     <?=$article['subtitle']?>
                 </div>
                 
-                <div><a href="<?=URL_BASE?>articles/view/index.php/<?=$article['id'].'/'.$article['title']?>">Read more <i class="uk-icon-link"></i></a></div>
+                <div><a href="<?=URL_BASE?>view/index.php/<?=$article['id'].'/'.$article['title']?>">Read more <i class="uk-icon-link"></i></a></div>
+                
+                <div class="uk-article-divider"></div>                        
+                
+                <div name="content" class="uk-width-1-1 edit uk-margin-top uk-margin-bottom editable" >
+                    <i class="uk-icon-external-link"></i> <?=$article['content']?>
+                </div>
             </article> 
+            
+        <?php } ?>
            <hr><br>
-        <?php }?>
+        
         </div>
         <div class="uk-width-medium-1-4">
             
@@ -76,6 +98,6 @@
     </div>
     
     <br>
-    <?php include '../snipps/foot.php';?>
+    <?php include '../../snipps/foot.php';?>
     </body>
 </html>

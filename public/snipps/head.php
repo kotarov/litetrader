@@ -7,7 +7,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
 
         <div class="uk-container uk-container-center uk-margin-large-bottom">
             <div class="uk-panel uk-margin-top">
-                <div class="uk-float-left"><h1><?=$_COMPANY['name']?></h1></div>
+                <div class="uk-float-left uk-width-small-1-1 uk-width-large-1-3"><h1><?=$_COMPANY['name']?></h1></div>
                 <div class="uk-navbar-content uk-hidden-small">
                     <form class="uk-search no-ajax" action="<?=URL_BASE?>products/search/" data-uk-search="{source:'<?=URL_BASE?>ajax.php?f=products/search'}">
                         <input class="uk-search-field" type="search" placeholder="search..." autocomplete="off">
@@ -17,7 +17,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                 
 
                 <!-- Shopping cart -->
-                <div class="uk-float-right">
+                <div class="uk-float-right uk-hidden-small">
                     <span id="shopping-cart" href="" class="uk-grid" style="min-width:13em" hidden>
                         <h1 class="uk-width-2-6">
                             <a href="#modal-cart" data-uk-modal><i class="uk-icon-shopping-bag uk-text-primary" style="position:relative">
@@ -43,7 +43,13 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                 </script>
                 <!-- //shopping cart -->
                 
-                <h2 class="uk-margin-small-top uk-margin-large-right uk-align-right"><i class="uk-icon-phone"></i> <?=$_COMPANY['phone']?></h2>
+                <h2 class="uk-margin-small-top uk-margin-small-bottom uk-margin-large-right uk-align-right uk-text-middle uk-grid uk-hidden-small">
+                    <span class="uk-panel uk-text-center"><i class="uk-icon-phone"></i></span> 
+                    <span class="uk-text-left uk-panel" <?=(substr_count($_COMPANY['phone'],";")?'style="margin-top:-0.5em"':'')?>><?=str_replace(";","<br>",$_COMPANY['phone'])?></span>
+                </h2>
+                <h2 class="uk-visible-small uk-margin-bottom">
+                    <span class="uk-panel"><i class="uk-icon-phone"></i> <?=$_COMPANY['phone']?></span>                    
+                </h2>
                 
             </div>
 

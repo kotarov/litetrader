@@ -9,8 +9,8 @@
     header("Expires:".date("D, M j G:i:s",(time()+$exp)) );
     header("pragma:cache");
     
-    $_ASSETS = parse_ini_file(__DIR__.'/../../ini/assets.ini');
-    $_COMPANY = parse_ini_file(__DIR__.'/../../ini/company.ini');
+    $_ASSETS = parse_ini_file(INI_DIR.'assets.ini');
+    $_COMPANY = parse_ini_file(INI_DIR.'company.ini');
     
     
     include(LIB_DIR."URLBase.php");

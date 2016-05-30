@@ -128,7 +128,7 @@
 
                 </ul>
                 
-                <div class="uk-margin-top">
+                <div class="uk-margin-top uk-text-large">
                      <a href="<?=URL_BASE?>"><i class="uk-icon-home"></i> Home page</a>
                 </div>
             </div>
