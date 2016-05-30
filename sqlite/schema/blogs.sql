@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `blogs`;
-CREATE TABLE `blogs` (
+DROP TABLE IF EXISTS blogs;
+CREATE TABLE blogs (
     id integer primary key, 
     title text,
     subtitle text,
@@ -13,7 +13,7 @@ CREATE TABLE `blogs` (
     image blob,
     is_active integer,
     is_new integer,
-    url_rewrite text,
+    url_rewrite text
 );
 
 DROP TABLE IF EXISTS categories;
