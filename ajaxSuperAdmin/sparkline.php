@@ -16,17 +16,17 @@ $charts = array(
     ),
     'customers'=>array(
         'db'=>'customers',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM customers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM customers WHERE date_add >= ".strtotime("1/1/$year")." AND date_add <= ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new registered customers'),
     ),
     'products'=>array(
         'db'=>'products',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM products WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM products WHERE date_add >= ".strtotime("1/1/$year")." AND date_add <= ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new products'),
     ),
     'suppliers'=>array(
         'db'=>'suppliers',
-        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM suppliers WHERE date_add > ".strtotime("1/1/$year")." AND date_add < ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
+        'sql'=>"SELECT COUNT(id) num, strftime('%m',date(date_add,'unixepoch')) mo FROM suppliers WHERE date_add >= ".strtotime("1/1/$year")." AND date_add <= ".strtotime("12/31/$year")." GROUP BY mo ORDER BY date_add",
         'sets'=>array( 'tooltipSuffix'=>'new registered suppliers'),
     ),
     'blogs'=>array(
@@ -51,12 +51,12 @@ if(isset($charts[$get['m']])){
     $ret['data'] = array(null,null,null,null,null,null,null,null,null,null,null,null);
     $c_m = date('m');
     for($i=0;$i<13;$i++){
-        if(($i) < $c_m) $ret['data'][$i] = 0;
+        if(($i+1) < $c_m) $ret['data'][$i] = 0;
         else $ret['data'][$i] = null;
     }
     
     foreach($d AS $k=>$v){
-        $ret['data'][(int)$v['mo']] = $v['num'];
+        $ret['data'][(int)$v['mo']-1] = $v['num'];
     }
 }
 return json_encode($ret);
