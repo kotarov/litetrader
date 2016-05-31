@@ -12,10 +12,10 @@ foreach (glob("$src/*.sql") as $file) {
     shell_exec('sqlite3 '.$dest.'/'.$db.' < '.$file);
 }
 
-echo "sudo chmod -R $dest";
+echo "sudo chmod 777 -R $dest";
 shell_exec("sudo chmod 777 -R $dest");
 
-echo "\n";
+echo "\n\n";
 
 /** INI */
 
@@ -27,7 +27,9 @@ foreach (glob("$src/*.ini") as $file) {
     echo 'cp '.$file.' '.$dest.'/'.$filename."\n";
     shell_exec('cp '.$file.' '.$dest.'/'.$filename);
 }
+echo "sudo chmod 777 $dest/*.ini";
+shell_exec("sudo chmod 777 $dest/*.ini");
 
-
+echo "\n";
 
 echo "\n *** // INSTALLATION END *** \n\n";
