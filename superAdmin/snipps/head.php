@@ -50,12 +50,14 @@
                 'categories'=>array('title'=>'Categories','url'=>'blogscategories.php')
             )
         ),
-        'tools'=>array(
-            'title'=>'Tools',
-            'icon'=>'uk-icon-wrench',
-            'data-active'=>'page-tools',
+        'settings'=>array(
+            'title'=>'Settings',
+            'icon'=>'uk-icon-gear',
+            'data-active'=>'page-settings',
             'children'=>array(
-                'update'=>array('title'=>'Git Updater','url'=>'tools-update.php')    
+                'company'=>array('title'=>'Company', 'url'=>'settings/company.php'),
+                'menus'=>array('title'=>'Menus', 'url'=>'settings/menus.php'),
+                //'update'=>array('title'=>'Git Updater','url'=>'tools-update.php')    
             )
         )
     );
@@ -79,11 +81,11 @@
                     <?php foreach($menu AS $k=>$v){
                         if(isset($v['children'])){
                             echo '<li data-uk-dropdown data-active="'.$v['data-active'].'">';
-                            echo '  <a href="'.(isset($v['url']) ? $v['url'] : '#').'">'.(isset($v['icon'])?'<i class="'.$v['icon'].'"></i> ':'').'<span data-lang>'.$v['title'].'</span> <i class="uk-icon-caret-down"></i></a>';
+                            echo '  <a href="'.(isset($v['url']) ? URL_BASE.$v['url'] : '#').'">'.(isset($v['icon'])?'<i class="'.$v['icon'].'"></i> ':'').'<span data-lang>'.$v['title'].'</span> <i class="uk-icon-caret-down"></i></a>';
                             echo '<div class="uk-dropdown"> <ul class="uk-nav uk-nav-navbar">';
                             foreach($v['children'] AS $kk=>$ch ){
                                 if(substr($kk,0,1) == '-') echo '<li class="uk-nav-divider"></li>';
-                                else echo '<li><a href="'.$ch['url'].'"><span data-lang>'.$ch['title'].'</span></a></li>';
+                                else echo '<li><a href="'.URL_BASE.$ch['url'].'"><span data-lang>'.$ch['title'].'</span></a></li>';
                             }
                             echo '</ul></div></li>';
                         }else{
@@ -112,11 +114,11 @@
                                 echo '  <ul class="uk-nav-sub">';
                                 foreach($v['children'] AS $kk=>$ch ){
                                     if(substr($kk,0,1) == '-') echo '<li class=""></li>';
-                                    else echo '<li><a href="'.$ch['url'].'">'.$ch['title'].'</a></li>';
+                                    else echo '<li><a href="'.URL_BASE.$ch['url'].'">'.$ch['title'].'</a></li>';
                                 }
                                 echo ' </ul></li>';
                             }else{
-                                echo '<li data-active="'.$v['data-active'].'"><a href="'.$v['url'].'">'.$v['title'].'</a></li>'; 
+                                echo '<li data-active="'.$v['data-active'].'"><a href="'.URL_BASE.$v['url'].'">'.$v['title'].'</a></li>'; 
                             }
                              echo '<li class="uk-nav-divider"></li>'; 
                         }?>
@@ -126,12 +128,12 @@
             </div>
             
              <script>
-                $.getJSON("ajax.php?f=getLogged").done(function(d){ if(d.id){
+                $.getJSON("<?=URL_BASE?>ajax.php?f=getLogged").done(function(d){ if(d.id){
                     var active = "";
                     if($("body").attr("id") == "page-profile") active = ' class="uk-active"'
                     $(".customer-nav-menu").html(''
-                        +'<li'+active+'><a href="profile.php"> '+ d.name+' '+ d.family +' </a></li>'
-                        +'<li><a onclick="$.get(\'ajax.php?f=postLogout\').done(window.location.replace(\'index.php\'))"><i class="uk-icon-power-off"></i> Exit</a></li>'
+                        +'<li'+active+'><a href="<?=URL_BASE?>profile.php"> '+ d.name+' '+ d.family +' </a></li>'
+                        +'<li><a onclick="$.get(\'<?=URL_BASE?>ajax.php?f=postLogout\').done(window.location.replace(\'<?=URL_BASE?>index.php\'))"><i class="uk-icon-power-off"></i> Exit</a></li>'
                     );
                 }});
                 $("[data-active='"+$("body").attr("id")+"']").addClass("uk-active");

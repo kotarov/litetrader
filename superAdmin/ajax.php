@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-define( 'DB_DIR', realpath('../sqlite/').'/' );
-define('LIB_DIR', realpath('../lib/'   ).'/' );
-define('INI_DIR', realpath('../ini/'   ).'/' );
+define('DIR_BASE', realpath('../'       ).'/' );
+define(  'DB_DIR', realpath('../sqlite/').'/' );
+define( 'LIB_DIR', realpath('../lib/'   ).'/' );
+define( 'INI_DIR', realpath('../ini/'   ).'/' );
 
 
 if( isset($_SESSION['employee']['id']) 

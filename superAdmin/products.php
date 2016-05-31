@@ -43,6 +43,7 @@
         <link  href="<?=$_ASSETS['select2.css']?>" rel="stylesheet" />
         <script src="<?=$_ASSETS['select2.js']?>"></script>
         
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
         <script src="<?=$_ASSETS['chart.sparkline.js']?>"></script>
         
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">

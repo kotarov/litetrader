@@ -26,6 +26,8 @@
         <link  href="<?=$_ASSETS['select2.css']?>" rel="stylesheet" />
         <script src="<?=$_ASSETS['select2.js']?>"></script>
         
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
+        
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
         <style> .uk-table-condensed td { padding-top:0px;padding-bottom:0px} </style>

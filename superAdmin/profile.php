@@ -21,6 +21,8 @@
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
         
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
+        
         <style type="text/css">
             @media (min-width: 768px){
                 .left-menu-hat { border-right: 1px solid #ddd; } 

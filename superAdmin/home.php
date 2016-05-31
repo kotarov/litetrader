@@ -17,6 +17,8 @@
         
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
+        
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
     </head>
     
     <body id="page-home"> 

@@ -28,6 +28,8 @@
         
         <script src="<?=$_ASSETS['highlight.js']?>"></script>
         
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
+        
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['select2.css']?>" rel="stylesheet" />

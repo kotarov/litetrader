@@ -30,6 +30,7 @@
         <script src="<?=$_ASSETS['select2.js']?>"></script>
         
         <script src="<?=$_ASSETS['chart.sparkline.js']?>"></script>
+        <script src="<?=$_ASSETS['lang.js']?>"></script>
         
         <link  href="<?=$_ASSETS['application.css']?>" rel="stylesheet">
         <link  href="<?=$_ASSETS['theme.css']?>" rel="stylesheet">

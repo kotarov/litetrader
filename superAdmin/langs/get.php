@@ -8,11 +8,16 @@ if(isset($_SESSION['lang']) && file_exists($_SESSION['lang'].'.json') ){
 }
 
 include $lang_file;
+
+$page_lang_file = basename($_SERVER['HTTP_REFERER']).'/'.$lang_file;
+//echo $page_lang_file;
+
+if(file_exists($page_lang_file)) {
+    echo "\n$.extend(lang,".file_get_contents($page_lang_file).");";
+}
+
 ?>
-/*
-function _(st){
-    return lang[st]||st;
-}*/
+
 
 $(function(){
     
