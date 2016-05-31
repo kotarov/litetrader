@@ -54,7 +54,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
             </div>
 
             <!-- menu -->
-            <nav class="uk-navbar main-navbar">
+            <nav class="uk-navbar main-navbar uk-margin-bottom">
                 <ul class="uk-navbar-nav uk-hidden-small">
                     <?php if($me['public']['home']) { ?>
                     <li data-active="page-home">
