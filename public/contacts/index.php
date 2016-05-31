@@ -23,7 +23,7 @@
     <body id="page-contacts"> 
     <?php include '../snipps/head.php'; ?>
 
-
+        <br>
         <div class="uk-grid" data-uk-grid-margin>
             <div class="uk-width-1-1 uk-text-center">
                 <h1 class="uk-heading-large">Contact</h1>

@@ -12,7 +12,7 @@
                     +'</tr></thead>'
                     +'<tbody></tbody>'
                     +'<tfoot>'
-                    +'  <tr><th colspan="6" class="uk-text-right">'+cart.total.toFixed(2)+'</th></tr>'
+                    +'  <tr><th colspan="5" class="uk-text-right ">Total:</th><th class="uk-text-right cart-sum"> '+cart.total.toFixed(2)+'</th></tr>'
                     +'</tfoot>');
                     $.each(cart.data, function(k,v){
                         $("table.shopping-cart-detailed").find("tbody").append('<tr>'

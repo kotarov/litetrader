@@ -35,26 +35,28 @@
         </style>
     </head>
     
-    <body id="page-product"> 
+    <body id="page-order"> 
         <?php include '../snipps/head.php'; ?>
         <h1>Order details</h1>
         
-        
+        <br>
         <div class="cart-dependans-reverse">
             <p class="uk-alert">You cannot order empty cart. </p>
         </div>
         <div id="container">
         
-        <hr>
+        
         <h2 name="cart-container"><b class="uk-badge uk-badge-notification">1</b> Shopping cart</h2>
+        <hr>
         <div class="uk-grid">
             <div class="uk-width-medium-1-6"></div>
             <div class="uk-width-medium-2-3"><?php include __DIR__.'/../cart/content.php'; ?></div>
         </div>
         
+        <br>
         <form class="uk-form uk-form-horizontal cart-depends" action="postOrder">    
-            <hr>
             <h2><b class="uk-badge uk-badge-notification">2</b> Address</h2>
+            <hr>
             <div class="uk-grid">
                 <div class="uk-width-medium-1-6"></div>
                 <div class="uk-width-medium-2-3" id="address">
@@ -96,8 +98,9 @@
             </script>
     
             <br>
-            <hr>
+            <br>
             <h2><b class="uk-badge uk-badge-notification">3</b> Paiment method <i class="uk-text-danger">*</i></h2>
+            <hr>
             <div class="uk-grid" name="choose-method">
                 <div class="uk-width-medium-1-6"></div>
                 <div class="uk-width-medium-2-3">
@@ -115,7 +118,7 @@
                 </div>
             </div>
             
-            <br><hr><br>
+            <br><br><br>
             <div class="uk-grid cart-depends">
                 <div class="uk-width-medium-1-6"></div>
                 <div class="uk-width-medium-2-3">
