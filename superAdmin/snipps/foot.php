@@ -1,4 +1,3 @@
-    
         <!-- footer -->
     <div id="page-foot" class="uk-text-center uk-margin-top uk-margin-bottom">
         <hr>

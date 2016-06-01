@@ -19,6 +19,10 @@
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.search.css']?>">
         <script src="<?=$_ASSETS['uikit.search.js']?>"></script>
         
+        <link rel="stylesheet" href="<?=$_ASSETS['fotorama.css']?>">
+        <script src="<?=$_ASSETS['fotorama.js']?>"></script>
+        
+        
         <link href="<?=URL_BASE?>css/theme.css" rel="stylesheet">
         
         <link rel="stylesheet" href="<?=$_ASSETS['uikit.dotnav.css']?>" />
@@ -30,45 +34,7 @@
     </head>
     <body id="page-home"> 
             <?php include '../snipps/head.php'; ?>
-            
-            <!-- Jumbo -->
-            <?php $jumbo = parse_ini_file(INI_DIR."jumbo.ini",true);?>
-            <div class="uk-grid uk-grid-collapse">
-                
-                <div class="uk-width-medium-3-4">
-                    <div id="slideshow">
-                        <div class="uk-slidenav-position">
-                            <ul class="uk-slideset uk-grid uk-flex-center">
-                                <?php foreach($jumbo['img']['src'] AS $k => $src){ ?>
-                                    <li> 
-                                    <?php if($jumbo['img']['href'][$k]) { ?> <a href="<?=$jumbo['img']['href'][$k]?>">  <?php } ?>
-                                        <img src="<?=$src?>" width="100%" alt="<?=$jumbo['img']['alt'][$k]?>">
-                                    <?php if($jumbo['img']['href'][$k]) { ?>  </a> <?php } ?>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                            <a href="#" class="uk-slidenav uk-slidenav-previous" data-uk-slideset-item="previous"></a>
-                            <a href="#" class="uk-slidenav uk-slidenav-next" data-uk-slideset-item="next"></a>
-                        </div>
-                        <ul class="uk-slideset-nav uk-dotnav uk-flex-center uk-margin-top"></ul>
-                    </div>
-                    <script>UIkit.slideset("#slideshow", { default:1, animation:'flip-horizontal', duration: 200, autoplay: false }); $("#slideshow [hidden]").show()</script>
-
-                </div>
-                
-                <div class="uk-width-medium-1-4 uk-panel uk-panel-box uk-vertical-align uk-text-center" style="margin-bottom:65px">
-                   <div class="uk-vertical-align-middle">
-                       <h1>Your Brand</h1>
-                       <p><b>Moneyback garantee</b></p>
-                       <img style="max-width:50%" src="../img/certificate.ico">
-                       <div>100% satisfaction</div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- //Jumbo -->
-            
-            
+            <?php include '../snipps/homeslider.php';?>
             
             <!-- Advertize -->
             <div class="uk-grid" data-uk-grid-margin>
@@ -166,7 +132,6 @@
             </div>
             <!-- //well -->
 
-        </div>
 
     <?php include '../snipps/foot.php';?>
     </body>

@@ -7,7 +7,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
 
         <div class="uk-container uk-container-center uk-margin-large-bottom">
             <div class="uk-panel uk-margin-top">
-                <div class="uk-float-left uk-width-small-1-1 uk-width-large-1-3"><h1><?=$_COMPANY['name']?></h1></div>
+                <div class="uk-float-left"><h1><?=$_COMPANY['name']?></h1></div>
                 <div class="uk-navbar-content uk-hidden-small">
                     <form class="uk-search no-ajax" action="<?=URL_BASE?>products/search/" data-uk-search="{source:'<?=URL_BASE?>ajax.php?f=products/search'}">
                         <input class="uk-search-field" type="search" placeholder="search..." autocomplete="off">
@@ -18,17 +18,17 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
 
                 <!-- Shopping cart -->
                 <div class="uk-float-right uk-hidden-small">
-                    <span id="shopping-cart" href="" class="uk-grid" style="min-width:13em" hidden>
-                        <h1 class="uk-width-2-6">
+                    <div id="shopping-cart" class="uk-grid" style="min-width:13em" hidden>
+                        <div class="uk-width-2-6 uk-text-large shopping-cart-icon">
                             <a href="#modal-cart" data-uk-modal><i class="uk-icon-shopping-bag uk-text-primary" style="position:relative">
                                 <span style="position:absolute;margin-top:-1em;margin-left:2em;display:none" class="shopping-cart-badge uk-badge uk-badge-notification uk-badge-danger">0</span>
                             </i></a>
-                        </h1>
-                        <div class="uk-width-4-6 uk-text-right">
-                            <div class="uk-text-muted">Shopping cart</div>
-                            <big class="uk-text-primary uk-text-bold shopping-cart-price" style="margin-top:0;display:none">0.00</big>
                         </div>
-                    </span>
+                        <div class="uk-width-4-6 uk-text-right">
+                            <div class="uk-text-muted" data-lang>Shopping cart</div>
+                            <span class="uk-text-primary uk-text-bold uk-text-large shopping-cart-price" style="margin-top:0;display:none">0.00</span>
+                        </div>
+                    </div>
                 </div>
                 <script>
                     $(document).on("shopping-cart-changed", function(e, cart){
@@ -43,13 +43,15 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
                 </script>
                 <!-- //shopping cart -->
                 
-                <h2 class="uk-margin-small-top uk-margin-small-bottom uk-margin-large-right uk-align-right uk-text-middle uk-grid uk-hidden-small">
+                <!-- Phone --> 
+                <h2 class="uk-margin-small-top uk-float-right uk-margin-small-bottom uk-margin-large-right uk-align-right uk-text-middle uk-grid uk-hidden-small uk-hidden-medium">
                     <span class="uk-panel uk-text-center"><i class="uk-icon-phone"></i></span> 
                     <span class="uk-text-left uk-panel" <?=(substr_count($_COMPANY['phone'],";")?'style="margin-top:-0.5em"':'')?>><?=str_replace(";","<br>",$_COMPANY['phone'])?></span>
                 </h2>
-                <h2 class="uk-visible-small uk-margin-bottom">
+                <h2 class="uk-hidden-large uk-margin-bottom uk-text-left uk-margin-small-top" style="clear:both">
                     <span class="uk-panel"><i class="uk-icon-phone"></i> <?=$_COMPANY['phone']?></span>                    
                 </h2>
+                <!-- //Phone -->
                 
             </div>
 
@@ -64,7 +66,7 @@ if($me['public']['products']) $menu = include __DIR__.'/../../ajax/getMenu.php';
 
                     <?php if($me['public']['products']) { ?>
                     <li data-active="page-products" data-uk-dropdown>
-                            <a href="<?=URL_BASE?>products/" class="uk-button-dropdown" aria-haspopup="true" data-uk-dropdown="" aria-expanded="falae" >Products</a>
+                            <a href="<?=URL_BASE?>products/" class="uk-button-dropdown" aria-haspopup="true" data-uk-dropdown="" aria-expanded="false" >Products</a>
                             <div class="uk-dropdown uk-dropdown-width-3 uk-dropdown-bottom" style="top: 30px; left: 0px;">
                                 <div class="uk-grid uk-dropdown-grid">
                                     <?php foreach($menu['data'] AS $r=>$m){ ?>

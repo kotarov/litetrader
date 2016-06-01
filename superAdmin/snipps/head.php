@@ -57,6 +57,7 @@
             'children'=>array(
                 'company'=>array('title'=>'Company', 'url'=>'settings/company.php'),
                 'menus'=>array('title'=>'Menus', 'url'=>'settings/menus.php'),
+                'homeslider'=>array('title'=>'Home Slider', 'url'=>'settings/homeslider.php'),
                 //'update'=>array('title'=>'Git Updater','url'=>'tools-update.php')    
             )
         )

@@ -1,5 +1,11 @@
 .uk-navbar.main-navbar { background:transparent; border-style:solid; border-color: #ddd; border-width:0px 0px 1px 0px;}
 .uk-navbar-center { max-width: 90% }
 
+.shopping-cart-icon { font-size:2.2em}
+#modal-cart .quantity { width:4em}
+table#shopping-cart-detailed > tfoot > th {border-top:1px solid #aaa}
+
 table tfoot th { font-weight:bold; font-style:normal;font-size:1.2em;}
 .cart-sum { font-style: normal; font-weight:bold; font-size:1.7em;}
+
+input[type=search] { background-color:#f5f5f5;border1: 1px solid #ccc;}

@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SETTINGS - Company</title>
+        <title>SETTINGS - Menu</title>
         <link rel="shortcut icon" href="<?=URL_BASE?>img/favicon.png" type="image/x-icon">
         <link rel="apple-touch-icon-precomposed" href="<?=URL_BASE?>img/apple-touch-icon.png">
         

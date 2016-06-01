@@ -10,7 +10,6 @@ if(isset($_SESSION['lang']) && file_exists($_SESSION['lang'].'.json') ){
 include $lang_file;
 
 $page_lang_file = basename($_SERVER['HTTP_REFERER']).'/'.$lang_file;
-//echo $page_lang_file;
 
 if(file_exists($page_lang_file)) {
     echo "\n$.extend(lang,".file_get_contents($page_lang_file).");";
@@ -28,7 +27,7 @@ $(function(){
                 if(typeof st == "string") $(o).attr( "placeholder", (lang[st]||st) );
                 break;
             default:
-                var st = $.trim($(o).html());
+                var st = $.trim( $(o).data("lang")) || $.trim($(o).html());
                 if(typeof st == "string") $(o).html( lang[st]||st );
         }
     });

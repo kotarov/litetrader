@@ -74,7 +74,6 @@
             
         </div>
     </div>
-    
     <br>
     <?php include '../snipps/foot.php';?>
     </body>

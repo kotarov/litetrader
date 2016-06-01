@@ -1,6 +1,4 @@
-<style>
-            #modal-cart .quantity { width:4em};
-        </style>
+
         <div id="modal-cart" class="uk-modal">
             <div class="uk-modal-dialog"><a class="uk-modal-close uk-close"></a>
                 <div class="uk-modal-header"><h3>Yours shopping cart</h3></div>

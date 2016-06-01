@@ -1,3 +1,4 @@
+        </div>
         <!-- footer -->
         <div class="uk-block uk-block-secondary uk-contrast">
             <div class="uk-container">
