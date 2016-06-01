@@ -80,14 +80,14 @@
             <div id="modal-new-category" class="uk-modal" data-hide-on-submit>
                 <div class="uk-modal-dialog">
                     <a class="uk-modal-close uk-close"></a>
-                    <div class="uk-modal-header"> <h3>Create new category</h3> </div>
+                    <div class="uk-modal-header"> <h3 data-lang>Create new category</h3> </div>
                     <form class="uk-form uk-form-horizontal" action="ajax.php?f=products/postNewCategory" data-trigger="category-changed">
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Name</label>
+                            <label class="uk-form-label"><span data-lang>Name</span> <span class="uk-text-danger">*</span></label>
                             <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="name"></div>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Parent</label>
+                            <label class="uk-form-label" data-lang>Parent</label>
                             <div class="uk-form-controls"><select data-get="ajax.php?f=products/getCategories&getforselect" class="uk-width-1-1" name="id_parent"></select></div>
                             <script>$(document).on("category-changed", function(e,d){
                                 var select = $("#modal-new-category [name=id_parent]").html("").append('<option value="0">-</option>');
@@ -97,15 +97,15 @@
                             })</script>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Position</label>
+                            <label class="uk-form-label" data-lang>Position</label>
                             <div class="uk-form-controls"><input type="number" class="uk-width-1-1" name="pos"></div>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Description</label>
+                            <label class="uk-form-label"><span data-lang>Description</span> <span class="uk-text-danger">*</span></label>
                             <div class="uk-form-controls"><textarea class="uk-width-1-1" name="description"></textarea></div>
                         </div>
                         <div class="uk-form-row">
-                                <label class="uk-form-label">Tags  <span class="uk-text-danger">*</span></label>
+                                <label class="uk-form-label"><span data-lang>Tags</span>  <span class="uk-text-danger">*</span></label>
                                 <div class="uk-form-controls">
                                     <select class="uk-width-1-1 select2" style="width:100%" 
                                                 data-tags="true" 
@@ -113,12 +113,12 @@
                                                 data-tokenSeparators='[",", " "]' 
                                                 name="tags[]"
                                             ></select>
-                                    <p class="uk-form-help-block">Separate tags with <code>comma</code>, <code>space</code> or <code>&lt;Еnter&gt;</code>.</p>
+                                    <p class="uk-form-help-block"><span data-lang>Separate tags with</span> <code data-lang>comma</code>, <code data-lang>space</code> <span data-lang>or</span> <code>&lt;Еnter&gt;</code>.</p>
                                 </div>
                             </div>
                         <div class="uk-modal-footer">
-                            <button class="uk-button uk-button-primary">Save</button>
-                            <button class="uk-button uk-modal-close">Cancel</button>
+                            <button class="uk-button uk-button-primary" data-lang>Save</button>
+                            <button class="uk-button uk-modal-close" data-lang>Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -129,15 +129,15 @@
             <div id="modal-edit-category" class="uk-modal" data-get="ajax.php?f=products/getCategory" data-hide-on-submit>
                 <div class="uk-modal-dialog">
                     <a class="uk-modal-close uk-close"></a>
-                    <div class="uk-modal-header"> <h3>Edit category #<span name="id"></span></h3> </div>
+                    <div class="uk-modal-header"> <h3><span data-lang>Edit category</span> #<span name="id"></span></h3> </div>
                     <form class="uk-form uk-form-horizontal" action="ajax.php?f=products/postEditCategory" data-trigger="category-changed">
                         <input type="hidden" name="id">
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Name</label>
+                            <label class="uk-form-label"><span data-lang>Name</span> <span class="uk-text-danger">*</span></label>
                             <div class="uk-form-controls"><input class="uk-width-1-1" type="text" name="name"></div>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Parent</label>
+                            <label class="uk-form-label"><span data-lang>Parent</span></label>
                             <div class="uk-form-controls"><select data-get="ajax.php?f=products/getCategories&getforselect" class="uk-width-1-1" name="id_parent"></select></div>
                             <script>$(document).on("category-changed", function(e,d){
                                 var select = $("#modal-edit-category [name=id_parent]").html("").append('<option value="0">-</option>');
@@ -147,15 +147,15 @@
                             })</script>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Position</label>
+                            <label class="uk-form-label"><span data-lang>Position</span></label>
                             <div class="uk-form-controls"><input type="number" class="uk-width-1-1" name="pos"></div>
                         </div>
                         <div class="uk-form-row">
-                            <label class="uk-form-label">Description</label>
+                            <label class="uk-form-label"><span data-lang>Description</span> <span class="uk-text-danger">*</span></label>
                             <div class="uk-form-controls"><textarea class="uk-width-1-1" name="description"></textarea></div>
                         </div>
                         <div class="uk-form-row">
-                                <label class="uk-form-label">Tags  <span class="uk-text-danger">*</span></label>
+                                <label class="uk-form-label"><span data-lang>Tags</span>  <span class="uk-text-danger">*</span></label>
                                 <div class="uk-form-controls">
                                     <select class="uk-width-1-1 select2" style="width:100%" 
                                                 data-tags="true" 
@@ -163,12 +163,12 @@
                                                 data-tokenSeparators='[",", " "]' 
                                                 name="tags[]"
                                             ></select>
-                                    <p class="uk-form-help-block">Separate tags with <code>comma</code>, <code>space</code> or <code>&lt;Еnter&gt;</code>.</p>
+                                    <p class="uk-form-help-block"><span data-lang>Separate tags with</span> <code data-lang>comma</code>, <code data-lang>space</code> <span data-lang>or</span> <code>&lt;Еnter&gt;</code>.</p>
                                 </div>
                         </div>
                         <div class="uk-modal-footer">
-                            <button class="uk-button uk-button-primary">Save</button>
-                            <button class="uk-button uk-modal-close">Cancel</button>
+                            <button class="uk-button uk-button-primary" data-lang>Save</button>
+                            <button class="uk-button uk-modal-close" data-lang>Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -189,13 +189,13 @@
             <div id="modal-delete-category" class="uk-modal" data-hide-on-submit>
                 <div class="uk-modal-dialog uk-modal-dialog-small">
                     <a class="uk-modal-close uk-close"></a>
-                    <div class="uk-modal-header"> <h3>Delete category</h3> </div>
+                    <div class="uk-modal-header"> <h3 data-lang>Delete category</h3> </div>
                     <form action="ajax.php?f=products/postDeleteCategory" data-trigger="category-changed">
-                        <p>Are you sure you want to delete this category ? <div class="uk-text-muted"> <span name="name"></span> - <code>#<b name="id"></b></code> </div></p>
+                        <p><span data-lang>Are you sure you want to delete this category ?</span> <div class="uk-text-muted"> <span name="name"></span> - <code>#<b name="id"></b></code> </div></p>
                         <input type="hidden" name="id">
                         <div class="uk-text-right">
-                            <button type="submit" class="uk-button uk-button-danger">Delete</button>
-                            <button class="uk-modal-close uk-button">Cancel</button>
+                            <button type="submit" class="uk-button uk-button-danger" data-lang>Delete</button>
+                            <button class="uk-modal-close uk-button" data-lang>Cancel</button>
                         </div>
                     </form>
                 </div>
